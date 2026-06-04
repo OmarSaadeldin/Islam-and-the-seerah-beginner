@@ -1,4 +1,3 @@
-
 const CACHE = 'seerah-v2';
 const URLS = ['.'];
 
