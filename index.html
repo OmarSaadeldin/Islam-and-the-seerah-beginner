@@ -191,6 +191,7 @@ body{
 .level-icon.peach-icon{background:linear-gradient(135deg,#FFB74D,#FF8A00)}
 .level-icon.plum-icon{background:linear-gradient(135deg,#DDA0DD,#BA7EBA)}
 .level-icon.crimson-icon{background:linear-gradient(135deg,#D05050,#AF3030)}
+.level-icon.calligraphy-icon{font-family:'Traditional Arabic','Scheherazade New','Arabic Typesetting',serif;font-size:20px;color:#D4B86A;line-height:1;background:linear-gradient(135deg,#1A2540,#0E1628)}
 .level-info{flex:1;min-width:0}
 .level-name{font-size:15px;font-weight:800;color:var(--text)}
 .level-desc{font-size:11px;color:var(--text-light);margin-top:1px}
@@ -1070,20 +1071,7 @@ body{
     <div class="home-stat"><span class="home-stat-icon">&#11088;</span> <span id="homeStars">0</span></div>
   </div>
   <div class="greeting-text" id="greetingText"><span class="greeting-emoji">🌅</span> Good morning, curious learner!</div>
-  <div class="home-mascot"><div class="home-calligraphy">
-    <div class="cal-border"></div>
-    <div class="cal-border2"></div>
-    <div class="cal-text">مُحَمَّد</div>
-
-    <span class="cal-moon">🌙</span>
-    <span class="cal-star" style="top:10%;left:12%;animation-delay:0s">✨</span>
-    <span class="cal-star" style="top:8%;right:15%;animation-delay:0.7s">✨</span>
-    <span class="cal-star" style="top:22%;left:6%;animation-delay:1.4s">✨</span>
-    <span class="cal-star" style="top:20%;right:8%;animation-delay:0.3s">✨</span>
-    <span class="cal-star" style="top:4%;left:48%;animation-delay:1s">✨</span>
-    <span class="cal-star" style="top:30%;left:50%;animation-delay:0.5s">✨</span>
-    <div class="cal-ornament">﴿ ﴾</div>
-  </div></div>
+  <div class="home-mascot"><img src="prophet-calligraphy.png" alt="Muhammad ﷺ" style="width:130px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(180,160,120,0.3);box-shadow:0 0 30px rgba(180,160,120,0.1);background:#0E1628;"></div>
   <button class="lang-top-btn" id="langSwitchBtn" data-action="toggle-lang"><span id="langSwitchText">العربية</span></button>
   <div class="home-title" id="homeTitle">Seerah of<br>the Prophet &amp; Islam</div>
   <div class="home-sub" id="homeSub">&#128214; Learn &bull; &#127775; Explore &bull; &#127942; Earn Rewards</div>
@@ -1257,25 +1245,29 @@ const LEVELS = [
     scene:"desert", unlocked:true,
     slides:[
       {
-        type:"info", scene:"night",
+        type:"info", scene:"custom",
         title:"Honoring the Prophet ﷺ",
+        bgImage:"L1S1.png",
         text:"You will see the symbol <em>&#65018;</em> after the name of Prophet Muhammad ﷺ. It is called <em>sallallahu alayhi wa sallam</em>, meaning 'peace and blessings of Allah be upon him.' Muslims say this whenever they hear his name, as a way of showing love and respect. Allah says in the Quran: <em>'Indeed, Allah confers blessing upon the Prophet, and His angels ask Him to do so. O you who believe, ask blessings upon him and greet him with peace.'</em> Every time you see ﷺ, remember to say it too!",
         source:"Quran 33:56"
       },
       {
-        type:"info", scene:"desert",
+        type:"info", scene:"custom",
+        bgImage:"L1S2.png",
         title:"The Year of the Elephant",
         text:"In the <em>Year of the Elephant</em> (570 CE), something amazing happened in the desert land of Makkah. An army with elephants came to attack Makkah, but tiny birds carrying small stones defeated them! Allah protected Makkah. In this blessed year, our beloved Prophet Muhammad ﷺ was born. Makkah rested among sandy hills where the sun was warm and the stars were bright at night.",
         source:"Surah Al-Fil 105:1-5, Jami' at-Tirmidhi 3619"
       },
       {
-        type:"info", scene:"night",
+        type:"info", scene:"custom",
+        bgImage:"L1S3.png",
         title:"A Blessed Birth",
         text:"Prophet Muhammad ﷺ was born on a Monday in the month of Rabi' al-Awwal. His mother <em>Amina</em> was overjoyed. Light filled the room, and the world became brighter. His father Abdullah had passed away before he was born. The Prophet ﷺ said: <em>'I was born during the daytime on a Monday.'</em>",
         source:"Sahih Muslim 2347"
       },
       {
-        type:"info", scene:"desert",
+        type:"info", scene:"custom",
+        bgImage:"L1S4.png",
         title:"Growing Up in the Desert",
         text:"The Prophet ﷺ was sent to the desert as a baby to grow strong and healthy. A kind lady named <em>Halima</em> took care of him. The desert had fresh air, clear skies, and beautiful sand dunes. His years with Halima were full of blessings - even the sheep gave more milk! Halima said: <em>'I saw blessings in everything after he came to us.'</em>",
         source:"Sahih Muslim 2362, The Sealed Nectar (p. 56)"
@@ -1294,8 +1286,8 @@ const LEVELS = [
       {
         type:"info", scene:"night",
         title:"Back to His Mother", titleAr:"وفاة أم النبي",
-        text:"After a few years, Muhammad ﷺ returned to live with his mother <em>Amina</em> in Makkah. When he was six years old, she took him to Yathrib (Madinah) to visit his relatives. On the way back to Makkah, Amina fell ill and passed away. Muhammad wept bitterly — he had lost his father before he was born, and now his mother. She was buried at a place called <em>al-Abwa'</em>. The faithful servant <em>Umm Ayman</em> took him to his grandfather Abdul Muttalib. Even through such sadness, he remained patient and brave.",
-        textAr:"عندما كان النبي ﷺ في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. بكى النبي ﷺ بحرارة — لقد فقد أباه قبل ولادته، وأمه الآن. دُفنت في مكان يسمى <em>الأبواء</em>. أخذته <em>أم أيمن</em>، خادمة أبيه الأمينة، إلى جده عبد المطلب. ورغم هذا الحزن، بقي صبوراً وشجاعاً.",
+        text:"After a few years, Muhammad ﷺ returned to live with his mother <em>Amina</em> in Makkah. When he was six years old, she took him to Yathrib (Madinah) to visit his relatives. On the way back to Makkah, Amina fell ill and passed away. he had lost his father before he was born, and now his mother. She was buried at a place called <em>al-Abwa'</em>. The faithful servant <em>Umm Ayman</em> took him to his grandfather Abdul Muttalib. Even through such sadness, he remained patient and brave.",
+        textAr:"عندما كان النبي ﷺ في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. لقد فقد أباه قبل ولادته، وأمه الآن. دُفنت في مكان يسمى <em>الأبواء</em>. أخذته <em>أم أيمن</em>، خادمة أبيه الأمينة، إلى جده عبد المطلب. ورغم هذا الحزن، بقي صبوراً وشجاعاً.",
         source:"The Sealed Nectar (p. 58)"
       },
       {
@@ -1592,7 +1584,7 @@ const LEVELS = [
 
 
   {
-    id:5, title:"The Prophet's Passing", titleAr:"وفاة النبي", desc:"How the Prophet left this world and how his companions said goodbye", descAr:"كيف غادر النبي هذه الدنيا وكيف ودعه أصحابه", icon:"🕊️",
+    id:5, title:"The Prophet's Passing", titleAr:"وفاة النبي", desc:"How the Prophet left this world and how his companions said goodbye", descAr:"كيف غادر النبي هذه الدنيا وكيف ودعه أصحابه", icon:"",
     scene:"mosque", unlocked:false,
     slides:[
       {
@@ -2084,8 +2076,8 @@ const LEVELS = [
       {
         type:"info", scene:"city",
         title:"Forgiveness",
-        text:"Forgiveness is from the acts of the Prophet ﷺ. The Prophet ﷺ said: <em>'Allah does not increase a servant who forgives except in honor'</em> (Sahih Muslim 2588). Forgiving someone who wrongs you when you are able to take revenge is a great act of worship if done for the sake of Allah, and it carries immense reward. When the Prophet ﷺ entered Makkah victorious, he forgave even his worst enemies who had tortured him and his companions for years. Not a single person was harmed — they were <em>al-Tulaqa'</em> (the freed ones). This is the ultimate example of forgiveness.",
-        source:"Sahih Muslim 2588, Ibn Hisham, al-Sirah al-Nabawiyyah 2:412"
+        text:"Forgiveness is from the acts of the Prophet ﷺ. The Prophet ﷺ said: <em>'Allah does not increase a servant who forgives except in honor'</em> (Sahih Muslim 2588). Forgiving someone who wrongs you when you are able to take revenge is a great act of worship if done for the sake of Allah, and it carries immense reward.",
+        source:"Sahih Muslim 2588"
       },
       {
         type:"info", scene:"desert",
@@ -2295,7 +2287,7 @@ const LEVELS = [
       {
         type:"info", scene:"city",
         title:"Prophetic Teachings About Food",
-        text:"the Prophet taught us to always eat and drink with the <em>right hand</em>. He said: <em>'O young boy! Say Bismillah, eat with your right hand, and eat from what is in front of you.'</em> He also taught us not to blow on hot food or drink, and to wait until it cools down. If you forget to say Bismillah before starting, say: <em>'Bismillahi awwalahu wa akhirah'</em> (In the name of Allah at its beginning and end). When we finish eating, we should say: <em>'Alhamdulillah'</em> (all praise is for Allah). The Prophet said: <em>'Whoever eats food and then says Alhamdulillah, his past sins are forgiven'</em> (Sunan al-Tirmidhi 3458). The Prophet taught us to keep our right hand for pure things like eating, drinking, and giving, while the left hand is used for cleaning after using the toilet and other tasks that require it. This way we honor our food and follow the Sunnah. The Prophet ﷺ never criticized any food — if he desired it, he ate it, and if he did not like it, he simply left it without complaint. This simple teaching brings blessings into our meals!",
+        text:"the Prophet taught us to always eat and drink with the <em>right hand</em>. He said: <em>'O young boy! Say Bismillah, eat with your right hand, and eat from what is in front of you.'</em> He also taught us not to blow on hot food or drink, and to wait until it cools down. If you forget to say Bismillah before starting, say: <em>'Bismillahi awwalahu wa akhirah'</em> (In the name of Allah at its beginning and end). When we finish eating, we should say: <em>'Alhamdulillah'</em> (all praise is for Allah). The Prophet said: <em>'Whoever eats food and then says: \"Al-ḥamdulillāh, alladhī aṭ'amanī hādha wa razaqanīhi min ghairi ḥawlin minnī, wa lā quwwatin\" (All praise is due to Allah who fed me this and granted it as provision to me, without any effort from me nor power), his past sins shall be forgiven'</em> (Sunan al-Tirmidhi 3458). The Prophet taught us to keep our right hand for pure things like eating, drinking, and giving, while the left hand is used for cleaning after using the toilet and other tasks that require it. This way we honor our food and follow the Sunnah. The Prophet ﷺ never criticized any food — if he desired it, he ate it, and if he did not like it, he simply left it without complaint. This simple teaching brings blessings into our meals!",
         source:"Sahih al-Bukhari 5376, Sahih Muslim 2022, Sunan Abi Dawud 3728, Sunan al-Tirmidhi 3458, Sunan Abi Dawud 3767, Riyad as-Salihin 733, Sahih al-Bukhari 5409, Sahih Muslim 2064"
       },
       {
@@ -2402,7 +2394,7 @@ const LEVELS = [
         type:"info", scene:"mosque",
         title:"Dua for Entering and Leaving the Mosque",
         text:"The mosque is the house of Allah, and we should be respectful when entering and leaving. When entering the mosque, step in with your <em>right foot first</em> and say: <em>'Allahumma iftah li abwaba rahmatik'</em> (O Allah, open for me the doors of Your mercy). When leaving, step out with your <em>left foot first</em> and say: <em>'Allahumma inni as'aluka min fadlik'</em> (O Allah, I ask You from Your bounty). Also pray two rak'ahs of Tahiyyat al-Masjid (greeting the mosque) before sitting down.",
-        source:"Sahih Muslim 714, Sunan Abi Dawud 32"
+        source:"Sahih Muslim 713, Sahih Muslim 714, Sunan Abi Dawud 32"
       },
       {
         type:"info", scene:"trade",
@@ -2469,8 +2461,8 @@ const LEVELS = [
       {
         type:"info", scene:"city",
         title:"Umar ibn al-Khattab",
-        text:"Umar was a strong man who was initially against Islam. One day, he set out to kill the Prophet ﷺ, but on the way he heard his sister reciting the Quran. When he heard the verses, his heart softened and he accepted Islam. The Prophet ﷺ prayed: <em>'O Allah, strengthen Islam with Umar ibn al-Khattab.'</em> His conversion made the Muslims stronger and braver. The Prophet ﷺ also said: <em>'I saw the devils from among the jinn fleeing from Umar'</em> (Sahih al-Bukhari 3294) and <em>'Shaytan has never seen you, O Umar, on a path except that he takes another path'</em> (Sahih Muslim 2396).",
-        source:"Sahih al-Bukhari 3864, Sahih al-Bukhari 3294, Sahih Muslim 2396"
+        text:"Umar was a strong man who was initially against Islam. One day, he set out to kill the Prophet ﷺ, but on the way he heard his sister reciting the Quran. When he heard the verses, his heart softened and he accepted Islam. The Prophet ﷺ prayed: <em>'O Allah, strengthen Islam with Umar ibn al-Khattab.'</em> His conversion made the Muslims stronger and braver. The Prophet ﷺ also said: <em>'Shaytan has never seen you, O Umar, on a path except that he takes another path'</em> (Sahih Muslim 2396).",
+        source:"Jami` at-Tirmidhi 3681, Sahih Muslim 2396"
       },
       {
         type:"info", scene:"city",
@@ -2481,7 +2473,7 @@ const LEVELS = [
       {
         type:"info", scene:"city",
         title:"Ali ibn Abi Talib",
-        text:"Ali was the first child to accept Islam. He grew up in the Prophet's home and learned from him closely. He later became the fourth Caliph of the Muslims. When the Quraysh planned to kill the Prophet ﷺ at night, Ali bravely slept in the Prophet's bed to trick the assassins. He was willing to sacrifice his own life to protect the Prophet. The Prophet ﷺ said: <em>'Whoever loves Ali, loves me; whoever hates Ali, hates me'</em> (Jami' at-Tirmidhi 3721). He also said: <em>'Ali is from me and I am from him'</em> (Sahih al-Bukhari 3009). Ali was known for his bravery, wisdom, and deep love for Allah.",
+        text:"Ali was the <em>first child to accept Islam</em>. He grew up in the Prophet's home and learned from him closely. He later became the fourth Caliph of the Muslims. When the Quraysh planned to kill the Prophet ﷺ at night, Ali <em>bravely slept in the Prophet's bed</em> to trick the assassins. He was willing to sacrifice his own life to protect the Prophet. Jami' at-Tirmidhi 3721 narrates that the Prophet ﷺ had a bird with him and prayed for Allah to send the <em>most beloved of His creatures</em> to eat with him — and Ali came. In Sahih al-Bukhari 3009, on the day of Khaibar, the Prophet ﷺ declared he would give the flag to one who <em>loves Allah and His Messenger and is loved by them</em> — and that was Ali. Ali was known for his bravery, wisdom, and deep love for Allah.",
         source:"The Sealed Nectar (p. 141), Jami' at-Tirmidhi 3721, Sahih al-Bukhari 3009"
       },
       {
@@ -2534,7 +2526,7 @@ const LEVELS = [
         type:"info", scene:"city",
         title:"Abu Bakr as-Siddiq (11-13 AH)",
         text:"After the Prophet's passing, <em>Abu Bakr</em> was chosen as the first Caliph (Khalifah). He faced a difficult time — some tribes refused to pay zakah, and false prophets arose. Abu Bakr stood firm and said: <em>'By Allah, if they withhold even a camel's rope they used to give to the Prophet, I will fight them for it.'</em> He waged the Ridda wars to unite the peninsula. During his short 2-year caliphate, he also compiled the scattered fragments of the Quran into one book, preserving Allah's words forever.",
-        source:"Sahih al-Bukhari 1399, 1400, Sahih al-Bukhari 4986"
+        source:"Sahih al-Bukhari 1399 & 1400, Sahih al-Bukhari 4986"
       },
       {
         type:"info", scene:"city",
@@ -2920,7 +2912,7 @@ const AR={
   "0-2-text":"وُلد النبي محمد ﷺ يوم الاثنين في شهر ربيع الأول. كانت أمه <em>آمنة</em> في غاية الفرح. امتلأت الغرفة بالنور، وأصبح العالم أكثر إشراقاً. وكان والده عبد الله قد توفي قبل ولادته. قال النبي ﷺ: <em>«ولدت يوم الاثنين»</em>",
   "0-2-source":"صحيح مسلم 1162",
   "0-3-title":"حليمة السعدية",
-  "0-3-text":"حسب العادة، أُرسل النبي ﷺ إلى البادية عندما كان رضيعاً ليكبر قوياً. أخذته السيدة <em>حليمة السعدية</em>. بوركت حياتها! كانت سنواته مع حليمة مليئة بالبركات - حتى الغنم كانت تعطي حليباً أكثر! قالت حليمة: <em>«رأيت البركة في كل شيء بعد أن جاء إلينا»</em>. نشأ في الصحراء حيث تعلم الفصاحة والشجاعة ورعى الغنم.",
+  "0-3-text":"حسب العادة، أُرسل النبي ﷺ إلى البادية عندما كان رضيعاً ليكبر قوياً. أخذته السيدة <em>حليمة السعدية</em>. بوركت حياتها! كانت سنواته مع حليمة مليئة بالبركات - حتى الغنم كانت تعطي حليباً أكثر! قالت حليمة: <em>«رأيت البركة في كل شيء بعد أن جاء إلينا»</em>. نشأ في الصحراء حيث تعلم الشجاعة ورعى الغنم.",
   "0-3-source":"السيرة النبوية لابن هشام",
   "0-4-title":"وفاة الأم",
   "0-4-text":"عندما كان محمد في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. بكى محمد بحرارة - لقد فقد أباه قبل ولادته، وأمه الآن. دفنت في مكان يسمى <em>الأبواء</em>. أخذته أم أيمن، خادمة أبيه الأمينة، إلى جده عبد المطلب.",
@@ -3838,8 +3830,8 @@ function buyHearts(){
 function renderLevels(){
   updateLevelUnlocks();
   const grid=document.getElementById('levelGrid');
-  const icons=['🏜️','⛰️','🌴','🕌','🕊️','💪','🕋','📜','☝️','🤲','💎','✨','📖','📋','📿','🤝','👑','⭐'];
-  const iconClasses=['','teal-icon','orange-icon','purple-icon','pink-icon','coral-icon','red-icon','gold-icon','mint-icon','emerald-icon','blue-icon','indigo-icon','rose-icon','plum-icon','','sky-icon','lavender-icon','peach-icon'];
+  const icons=['🏜️','⛰️','🌴','🕌','مُحَمَّد','💪','🕋','📜','☝️','🤲','💎','✨','📖','📋','📿','🤝','👑','⭐'];
+  const iconClasses=['','teal-icon','orange-icon','purple-icon','calligraphy-icon','coral-icon','red-icon','gold-icon','mint-icon','emerald-icon','blue-icon','indigo-icon','rose-icon','plum-icon','','sky-icon','lavender-icon','peach-icon'];
   grid.innerHTML=LEVELS.map((lv,i)=>{
     const completed=state.completedLevels.has(i);
     const stars=state.levelStars[i]||0;
@@ -3929,6 +3921,7 @@ function _renderSlideContent(slide,total){
   const sceneEl=document.getElementById('slideScene');
   const mappedScene=slide.scene==='mosque'||slide.scene==='masjid-nabawi'?'night':slide.scene;
   sceneEl.className='slide-scene scene-'+mappedScene;
+  if(slide.bgImage){sceneEl.style.backgroundImage='url('+slide.bgImage+')';sceneEl.style.backgroundSize='cover';sceneEl.style.backgroundPosition='center'}else{sceneEl.style.backgroundImage=''}
   sceneEl.innerHTML=getSceneHTML(slide.scene);
 
   // Title
@@ -4192,6 +4185,8 @@ function getSceneHTML(type){
         <div class="bt-warrior r"><div class="bt-w-body"></div><div class="bt-w-head"></div></div>
         <div class="bt-dust"></div>
         <div class="bt-flag"></div>`);
+    case 'custom':
+      return inner('');
     default:
       return inner(`<div class="sun"></div>
         <div class="sand-dune-1"></div><div class="sand-dune-2"></div>
