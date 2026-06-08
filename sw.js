@@ -1,4 +1,4 @@
-const CACHE = 'seerah-v2';
+const CACHE = 'seerah-v3';
 const URLS = ['.'];
 
 self.addEventListener('install', e => {
