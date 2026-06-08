@@ -407,6 +407,8 @@ body{
 .name-hint{font-size:11px;color:var(--text-muted);margin-bottom:10px;line-height:1.4}
 .name-input{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:var(--radius-sm);font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;color:var(--text);text-align:center;outline:none;transition:border-color 0.2s;box-sizing:border-box}
 .name-input:focus{border-color:var(--blue)}
+.name-error{font-size:12px;color:var(--red);font-weight:700;margin-top:6px;min-height:16px;transition:opacity 0.2s;opacity:0}
+.name-error.show{opacity:1}
 .name-btn{display:inline-block;margin-top:14px;padding:12px 36px;border:none;border-radius:var(--radius);background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(88,204,2,0.35)}
 .name-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(88,204,2,0.45)}
 
@@ -1285,6 +1287,7 @@ body{
   <div class="name-desc" id="nameDesc">I'd love to get to know you!</div>
   <div class="name-hint" id="nameHint"></div>
   <input class="name-input" id="nameInput" type="text" placeholder="Enter your name..." maxlength="30" autocomplete="off">
+  <div class="name-error" id="nameError"></div>
   <button class="name-btn" id="nameBtn" data-action="save-name">Save</button>
 </div>
 
@@ -3908,8 +3911,10 @@ function hideNamePrompt(){
 }
 function saveUserName(){
   const input=document.getElementById('nameInput');
+  const err=document.getElementById('nameError');
   const name=input.value.trim();
   if(name){
+    err.className='name-error';
     state.userName=name;
     saveState();
     hideNamePrompt();
@@ -3924,6 +3929,12 @@ function saveUserName(){
       const displayName=state.userName||fallback;
       g.innerHTML='<span class="greeting-emoji">'+em+'</span> '+__(key).replace('{name}',displayName)+'<span class="edit-icon">&#9998;</span>';
     }
+  } else {
+    err.textContent=state.language==='ar'?'الرجاء إدخال اسمك!':'Please enter your name!';
+    err.className='name-error show';
+    input.focus();
+    input.style.borderColor='var(--red)';
+    setTimeout(()=>{input.style.borderColor=''},2000);
   }
 }
 
