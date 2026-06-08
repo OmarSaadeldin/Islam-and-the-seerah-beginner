@@ -393,8 +393,35 @@ body{
 .notification-text{font-size:14px;color:var(--text-light);margin-bottom:14px;line-height:1.4}
 .notification-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.25);z-index:99;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .notification-overlay.show{opacity:1;pointer-events:auto}
-.toast{position:fixed;top:16px;right:16px;z-index:200;background:var(--red);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.2);transform:translateX(120%);opacity:0;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;pointer-events:none;max-width:280px}
+.toast{position:absolute;top:16px;right:16px;z-index:200;background:var(--red);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.2);transform:translateX(120%);opacity:0;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;pointer-events:none;max-width:280px}
 .toast.show{transform:translateX(0);opacity:1}
+
+/* NAME PROMPT */
+.name-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.3);z-index:179;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.name-overlay.show{opacity:1;pointer-events:auto}
+.name-dialog{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.85);background:var(--white);border-radius:var(--radius-xl);padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.25);text-align:center;z-index:180;opacity:0;pointer-events:none;transition:all 0.35s cubic-bezier(0.16,1,0.3,1);max-width:320px;width:85%}
+.name-dialog.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.name-icon{font-size:48px;margin-bottom:6px}
+.name-title{font-size:22px;font-weight:900;color:var(--text);margin-bottom:2px}
+.name-desc{font-size:14px;color:var(--text-light);margin-bottom:14px}
+.name-hint{font-size:11px;color:var(--text-muted);margin-bottom:10px;line-height:1.4}
+.name-input{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:var(--radius-sm);font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;color:var(--text);text-align:center;outline:none;transition:border-color 0.2s;box-sizing:border-box}
+.name-input:focus{border-color:var(--blue)}
+.name-btn{display:inline-block;margin-top:14px;padding:12px 36px;border:none;border-radius:var(--radius);background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(88,204,2,0.35)}
+.name-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(88,204,2,0.45)}
+
+/* LANGUAGE PICKER */
+.lang-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:189;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lang-overlay.show{opacity:1;pointer-events:auto}
+.lang-dialog{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.85);background:var(--white);border-radius:var(--radius-xl);padding:32px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;z-index:190;opacity:0;pointer-events:none;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);max-width:340px;width:88%}
+.lang-dialog.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.lang-icon{font-size:52px;margin-bottom:8px}
+.lang-title{font-size:22px;font-weight:900;color:var(--text);margin-bottom:4px}
+.lang-desc{font-size:14px;color:var(--text-light);margin-bottom:20px}
+.lang-options{display:flex;flex-direction:column;gap:10px}
+.lang-opt{padding:14px 20px;border:2px solid #e8e8e8;border-radius:var(--radius);background:var(--white);cursor:pointer;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;color:var(--text);text-align:center;transition:all 0.2s;width:100%}
+.lang-opt:hover{border-color:var(--blue);background:#F5FBFF;transform:scale(1.02)}
+.lang-opt:active{transform:scale(0.98)}
 
 /* ==================== ENHANCED SCENES ==================== */
 
@@ -887,7 +914,10 @@ body{
 @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* Greeting text */
-.greeting-text{font-size:14px;color:var(--text-light);margin-bottom:4px;font-weight:700}
+.greeting-text{font-size:14px;color:var(--text-light);margin-bottom:4px;font-weight:700;cursor:pointer;transition:opacity 0.2s}
+.greeting-text:hover{opacity:0.8}
+.greeting-text .edit-icon{font-size:11px;opacity:0.3;margin-left:4px;transition:opacity 0.2s}
+.greeting-text:hover .edit-icon{opacity:0.6}
 .greeting-text .greeting-emoji{margin-right:4px}
 .lang-top-btn{background:none;border:none;color:var(--blue);font-size:13px;font-weight:600;cursor:pointer;padding:6px 16px;margin:4px auto;display:block;opacity:0.8;transition:opacity 0.2s}.lang-top-btn:hover{opacity:1}
 
@@ -1070,7 +1100,7 @@ body{
     </button>
     <div class="home-stat"><span class="home-stat-icon">&#11088;</span> <span id="homeStars">0</span></div>
   </div>
-  <div class="greeting-text" id="greetingText"><span class="greeting-emoji">🌅</span> Good morning, curious learner!</div>
+  <div class="greeting-text" id="greetingText" data-action="show-name-prompt"><span class="greeting-emoji">🌅</span> Good morning, curious learner!</div>
   <div class="home-mascot"><img src="prophet-calligraphy.png" alt="Muhammad ﷺ" style="width:130px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(180,160,120,0.3);box-shadow:0 0 30px rgba(180,160,120,0.1);background:#0E1628;"></div>
   <button class="lang-top-btn" id="langSwitchBtn" data-action="toggle-lang"><span id="langSwitchText">العربية</span></button>
   <div class="home-title" id="homeTitle">Seerah of<br>the Prophet &amp; Islam</div>
@@ -1229,13 +1259,37 @@ body{
   <button class="dr-btn" id="drBtn" data-action="claim-daily">Claim!</button>
 </div>
 
+<!-- LANGUAGE PICKER -->
+<div class="lang-overlay" id="langOverlay"></div>
+<div class="lang-dialog" id="langDialog">
+  <div class="lang-icon">&#127760;</div>
+  <div class="lang-title" id="langPickTitle">Choose your language</div>
+  <div class="lang-desc" id="langPickDesc">You can switch anytime from the home screen.</div>
+  <div class="lang-options">
+    <button class="lang-opt" data-action="pick-lang-en">&#127468;&#127463; English</button>
+    <button class="lang-opt" data-action="pick-lang-ar">&#127462;&#127465; العربية</button>
+  </div>
+</div>
+
 <!-- STAR BURST CONTAINER -->
 <div class="star-burst-container" id="starBurstContainer"></div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<!-- NAME PROMPT -->
+<div class="name-overlay" id="nameOverlay" data-action="close-name"></div>
+<div class="name-dialog" id="nameDialog">
+  <div class="name-icon">&#128100;</div>
+  <div class="name-title" id="nameTitle">What's your name?</div>
+  <div class="name-desc" id="nameDesc">I'd love to get to know you!</div>
+  <div class="name-hint" id="nameHint"></div>
+  <input class="name-input" id="nameInput" type="text" placeholder="Enter your name..." maxlength="30" autocomplete="off">
+  <button class="name-btn" id="nameBtn" data-action="save-name">Save</button>
 </div>
+
+</div>
+
 
 <script>
 // ==================== APP DATA ====================
@@ -1247,27 +1301,27 @@ const LEVELS = [
       {
         type:"info", scene:"custom",
         title:"Honoring the Prophet ﷺ",
-        bgImage:"L1S1.png",
+        bgImage:"L1S1",
         text:"You will see the symbol <em>&#65018;</em> after the name of Prophet Muhammad ﷺ. It is called <em>sallallahu alayhi wa sallam</em>, meaning 'peace and blessings of Allah be upon him.' Muslims say this whenever they hear his name, as a way of showing love and respect. Allah says in the Quran: <em>'Indeed, Allah confers blessing upon the Prophet, and His angels ask Him to do so. O you who believe, ask blessings upon him and greet him with peace.'</em> Every time you see ﷺ, remember to say it too!",
         source:"Quran 33:56"
       },
       {
         type:"info", scene:"custom",
-        bgImage:"L1S2.png",
+        bgImage:"L1S2",
         title:"The Year of the Elephant",
         text:"In the <em>Year of the Elephant</em> (570 CE), something amazing happened in the desert land of Makkah. An army with elephants came to attack Makkah, but tiny birds carrying small stones defeated them! Allah protected Makkah. In this blessed year, our beloved Prophet Muhammad ﷺ was born. Makkah rested among sandy hills where the sun was warm and the stars were bright at night.",
         source:"Surah Al-Fil 105:1-5, Jami' at-Tirmidhi 3619"
       },
       {
         type:"info", scene:"custom",
-        bgImage:"L1S3.png",
+        bgImage:"L1S3",
         title:"A Blessed Birth",
         text:"Prophet Muhammad ﷺ was born on a Monday in the month of Rabi' al-Awwal. His mother <em>Amina</em> was overjoyed. Light filled the room, and the world became brighter. His father Abdullah had passed away before he was born. The Prophet ﷺ said: <em>'I was born during the daytime on a Monday.'</em>",
         source:"Sahih Muslim 2347"
       },
       {
         type:"info", scene:"custom",
-        bgImage:"L1S4.png",
+        bgImage:"L1S4",
         title:"Growing Up in the Desert",
         text:"The Prophet ﷺ was sent to the desert as a baby to grow strong and healthy. A kind lady named <em>Halima</em> took care of him. The desert had fresh air, clear skies, and beautiful sand dunes. His years with Halima were full of blessings - even the sheep gave more milk! Halima said: <em>'I saw blessings in everything after he came to us.'</em>",
         source:"Sahih Muslim 2362, The Sealed Nectar (p. 56)"
@@ -1275,6 +1329,7 @@ const LEVELS = [
       {
         type:"challenge",
         scene:"desert",
+        bgImage:"challenge",
         title:"Find the Blessing!", titleAr:"ابحث عن البركة!",
         text:"Can you remember the blessing that happened when the Prophet ﷺ was a baby with Halima?", textAr:"هل تتذكر البركة التي حدثت للنبي محمد ﷺ مع حليمة؟",
         challenge:{
@@ -1284,24 +1339,27 @@ const LEVELS = [
         }
       },
       {
-        type:"info", scene:"night",
+        type:"info", scene:"custom",
+        bgImage:"L1S6",
         title:"Back to His Mother", titleAr:"وفاة أم النبي",
         text:"After a few years, Muhammad ﷺ returned to live with his mother <em>Amina</em> in Makkah. When he was six years old, she took him to Yathrib (Madinah) to visit his relatives. On the way back to Makkah, Amina fell ill and passed away. he had lost his father before he was born, and now his mother. She was buried at a place called <em>al-Abwa'</em>. The faithful servant <em>Umm Ayman</em> took him to his grandfather Abdul Muttalib. Even through such sadness, he remained patient and brave.",
         textAr:"عندما كان النبي ﷺ في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. لقد فقد أباه قبل ولادته، وأمه الآن. دُفنت في مكان يسمى <em>الأبواء</em>. أخذته <em>أم أيمن</em>، خادمة أبيه الأمينة، إلى جده عبد المطلب. ورغم هذا الحزن، بقي صبوراً وشجاعاً.",
         source:"The Sealed Nectar (p. 58)"
       },
       {
-        type:"info", scene:"city",
+        type:"info", scene:"custom",
+        bgImage:"L1S7",
         title:"Under His Grandfather's Care", titleAr:"الجد الحنون والعيش مع أبي طالب",
         text:"His grandfather <em>Abdul Muttalib</em> loved him dearly. He was the leader of Makkah and treated Muhammad ﷺ with great care. They would sit together by the Kaaba, and Abdul Muttalib would say, 'This grandson of mine will be very special.' But Abdul Muttalib was old. He passed away when Muhammad was eight. Muhammad felt alone again, but his uncle <em>Abu Talib</em> took him in. Though poor, Abu Talib loved his nephew like a son. Muhammad worked as a shepherd to help his uncle. He would gaze at the stars and sky, pondering life. He became known among his people as <em>As-Sadiq</em> (the Truthful) and <em>Al-Amin</em> (the Trustworthy). Everyone respected him for his honor and integrity.",
         textAr:"أحب <em>عبد المطلب</em> حفيده كثيراً. كان يجلسه معه على فراش الشرف تحت ظل الكعبة. كان يقول: «إن لابني هذا شأناً عظيماً». لكن عبد المطلب كان كبيراً في السن. توفي عندما كان محمد في الثامنة من عمره. شعر محمد بالوحدة مرة أخرى، لكن عمه <em>أبو طالب</em> اعتنى به. كان أبو طالب فقيراً لكنه أحب ابن أخيه كثيراً. كان يعامله كابنه. عمل محمد راعياً للغنم لمساعدة عمه. كان يتأمل النجوم والسماء، ويفكر في الحياة. أصبح معروفاً بين قومه ب <em>الصادق الأمين</em> - الصادق والأمين. كان الجميع يحترمه لشرفه ونزاهته.",
         source:"The Sealed Nectar (p. 59), Ibn Hisham"
       },
       {
-        type:"quiz",
-        scene:"city",
-        title:"Quick Quiz!", titleAr:"اختبار سريع!",
-        text:"Let's see what you remember so far!", textAr:"لنرى ما تذكرته حتى الآن!",
+         type:"quiz",
+         scene:"city",
+         bgImage:"quiz",
+         title:"Quick Quiz!", titleAr:"اختبار سريع!",
+         text:"Let's see what you remember so far!", textAr:"لنرى ما تذكرته حتى الآن!",
         quiz:{
           question:"Who took care of Prophet Muhammad ﷺ after his mother passed away?",
           options:["His uncle Abu Talib","His grandfather Abdul Muttalib","Halima","His father"],
@@ -1310,16 +1368,18 @@ const LEVELS = [
         source:"The Sealed Nectar (p. 59)"
       },
       {
-        type:"info", scene:"trade",
-        title:"The Prophet's Work",
+         type:"info", scene:"custom",
+         bgImage:"L1S9",
+         title:"The Prophet's Work",
         text:"Before Allah sent him as a prophet, Muhammad ﷺ worked as a <em>shepherd</em>, looking after sheep in the hills around Makkah. He later worked as a <em>merchant</em>, traveling with trade caravans to distant lands. The Prophet ﷺ said: <em>'Allah did not send any prophet who was not a shepherd.'</em> He was known for his honesty in all his work.",
         source:"Sahih al-Bukhari 2262, The Sealed Nectar (p. 66)"
       },
       {
-        type:"quiz",
-        scene:"desert",
-        title:"Level 1 Review", titleAr:"مراجعة المستوى 1",
-        text:"Great job making it through the first chapter!", textAr:"عمل رائع في اجتياز الفصل الأول!",
+         type:"quiz",
+         scene:"desert",
+         bgImage:"quiz",
+         title:"Level 1 Review", titleAr:"مراجعة المستوى 1",
+         text:"Great job making it through the first chapter!", textAr:"عمل رائع في اجتياز الفصل الأول!",
         quiz:{
           question:"Where was Prophet Muhammad ﷺ born?",
           options:["Medina","Makkah","Ta'if","Jerusalem"],
@@ -1350,6 +1410,7 @@ const LEVELS = [
       {
         type:"challenge",
         scene:"city",
+        bgImage:"challenge",
         title:"Be a Helper!",
         text:"The Prophet ﷺ always helped others. Can you think of one way to help someone today?",
         challenge:{
@@ -1390,10 +1451,11 @@ const LEVELS = [
         source:"Surah Al-Alaq 96:1-5, Sahih al-Bukhari 3"
       },
       {
-        type:"quiz",
-        scene:"cave",
-        title:"Quick Quiz!",
-        text:"What did the angel Jibril tell the Prophet to do?",
+         type:"quiz",
+         scene:"cave",
+         bgImage:"quiz",
+         title:"Quick Quiz!",
+         text:"What did the angel Jibril tell the Prophet to do?",
         quiz:{
           question:"What was the first word revealed to Prophet Muhammad ﷺ?",
           options:["Pray","Read","Write","Speak"],
@@ -1436,6 +1498,7 @@ const LEVELS = [
       {
         type:"challenge",
         scene:"mountain",
+        bgImage:"challenge",
         title:"Forgiveness Challenge",
         text:"The Prophet ﷺ forgave those who hurt him. Can you forgive someone who upset you?",
         challenge:{
@@ -1460,6 +1523,7 @@ const LEVELS = [
       {
         type:"quiz",
         scene:"night",
+        bgImage:"quiz",
         title:"Quick Quiz!",
         text:"How many daily prayers were given as a gift during the Miraj?",
         quiz:{
@@ -1484,6 +1548,7 @@ const LEVELS = [
       {
         type:"quiz",
         scene:"desert",
+        bgImage:"quiz",
         title:"Level 3 Review", titleAr:"مراجعة المستوى 3",
         text:"You've reached the end of this journey! One last question...", textAr:"لقد وصلت إلى نهاية هذه الرحلة! سؤال أخير...",
         quiz:{
@@ -1522,6 +1587,7 @@ const LEVELS = [
       {
         type:"challenge",
         scene:"city",
+        bgImage:"challenge",
         title:"Good Neighbor",
         text:"The Prophet ﷺ taught us to be kind to our neighbors. Can you do something nice for a neighbor today?",
         challenge:{
@@ -1558,6 +1624,7 @@ const LEVELS = [
       {
         type:"quiz",
         scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz!",
         text:"Let's see what you remember about Madinah!",
         quiz:{
@@ -1570,6 +1637,7 @@ const LEVELS = [
       {
         type:"quiz",
         scene:"city",
+        bgImage:"quiz",
         title:"Level 4 Review", titleAr:"مراجعة المستوى 4",
         text:"You've learned about life in Madinah!", textAr:"لقد تعلمت عن الحياة في المدينة!",
         quiz:{
@@ -1637,6 +1705,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Honor the Prophet Today",
          text:"The Prophet gave everything for us. He endured hardship, hunger, and pain to deliver the message of Islam. One way to honor him today is to send salawat (blessings) upon him. The Prophet said: <em>'Whoever sends one blessing upon me, Allah sends ten blessings upon him.'</em> Say: 'Allahumma salli ala Muhammad' ten times right now!",
          source:"Sahih Muslim 408",
@@ -1647,6 +1716,7 @@ const LEVELS = [
        },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -1714,6 +1784,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"desert",
+        bgImage:"challenge",
         title:"Be Patient Like the Prophet",
         text:"This week, when something difficult happens — someone is mean to you, you are tired, or things don't go your way — remember the Prophet ﷺ. Stay patient, don't complain, and say 'Alhamdulillah'. Every difficulty you face patiently brings you closer to Allah.",
         challenge:{
@@ -1723,6 +1794,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -1784,6 +1856,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Memorize the Five Pillars",
         text:"Can you name all five pillars of Islam in order? Try to memorize them! Remember: Shahadah, Salah, Zakat, Sawm, Hajj. Practice saying them five times: 'The five pillars of Islam are Shahadah, Salah, Zakat, Sawm, and Hajj.'",
         challenge:{
@@ -1793,6 +1866,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz 1",
         text:"Let's test your knowledge!",
         quiz:{
@@ -1804,6 +1878,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz 2",
         text:"One more question!",
         quiz:{
@@ -1866,6 +1941,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Reflect on Your Faith",
         text:"Take a moment to think about the six articles of faith: Allah, His angels, His books, His messengers, the Last Day, and divine decree. Say in your heart: 'I believe in Allah, His angels, His books, His messengers, the Last Day, and the divine decree.'",
         challenge:{
@@ -1875,6 +1951,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz 1",
         text:"Let's test what you learned!",
         quiz:{
@@ -1886,6 +1963,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz 2",
         text:"One more question!",
         quiz:{
@@ -1953,6 +2031,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"desert",
+        bgImage:"challenge",
         title:"Learn One of Allah's Names",
         text:"This week, learn one of Allah's beautiful names: Ar-Rahman (The Most Merciful), Al-Karim (The Most Generous), or Al-Ghafur (The Oft-Forgiving). Use it when you make dua. Say: 'Ya Rahman, have mercy on me.' Say: 'Ya Ghafur, forgive me.' Knowing Allah's names makes us love Him more and worship Him better.",
         challenge:{
@@ -1962,6 +2041,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2029,6 +2109,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Pray One Salah with Full Focus",
         text:"This week, try to pray one salah (start with Fajr or Maghrib) with full concentration. When you say Allahu Akbar, think that Allah is greater than everything. Read the words slowly and think about what you are saying. Feel that you are talking to Allah! Once you have mastered one salah with full khushu, add another salah the next week. Keep going until all five daily prayers are prayed with focus and presence of heart. Imagine the peace you will feel knowing every single prayer you offer is truly connecting you to Allah!",
         challenge:{
@@ -2038,6 +2119,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2105,6 +2187,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"city",
+        bgImage:"challenge",
         title:"Be Like the Prophet This Week",
         text:"Pick one good quality to practice this week: smile at everyone (the Prophet ﷺ always smiled), help your mother at home, be honest in everything, or forgive someone who hurt you. Try your best to do it every day!",
         challenge:{
@@ -2114,6 +2197,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2182,6 +2266,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Reflect on One Miracle",
         text:"This week, pick one miracle from this level and think deeply about it. How amazing is it that water flowed from the Prophet's fingers? Or that the moon split? Say 'SubhanAllah' when you think about it. The Prophet ﷺ was given so many signs — all because Allah loves us and wants us to believe.",
         challenge:{
@@ -2191,6 +2276,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2258,6 +2344,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Recite One Page Every Day",
         text:"This week, commit to reading just one page of the Quran every day. It only takes 5 minutes, but the rewards are huge! Start with a short surah and read its meaning too. The more you read, the more you will love the Quran. Remember: the best of people are those who learn the Quran and teach it!",
         challenge:{
@@ -2267,6 +2354,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"mosque",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2328,6 +2416,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"city",
+        bgImage:"challenge",
         title:"Practice One Teaching Daily",
         text:"Choose ONE teaching from this level and practice it every day for one week. Eat with your right hand, say Bismillah before everything, sleep on your right side, greet your family with salam, or help your parents. the Prophet said: <em>'The most beloved deed to Allah is the one that is done consistently, even if it is small.'</em> Once this week is over, pick another teaching and practice it the next week. Keep adding more until all these beautiful Sunnahs become part of your daily life. The more you follow the Prophet ﷺ, the more you become like him — and Allah loves those who are consistent!",
         source:"Sahih al-Bukhari 6464",
@@ -2338,6 +2427,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2349,6 +2439,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Level Review", titleAr:"مراجعة المستوى",
         text:"One more question!", textAr:"سؤال آخر!",
         quiz:{
@@ -2410,6 +2501,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"mosque",
+        bgImage:"challenge",
         title:"Memorize One Dua This Week",
         text:"Choose ONE dua from this level and memorize it this week. Start with the easiest: say <em>'Bismillah'</em> before eating and <em>'Alhamdulillah'</em> after eating. Once you master that, learn the dua for sleeping. Then the dua for leaving the house. Duas are our connection to Allah — He is always listening and ready to answer!",
         challenge:{
@@ -2419,6 +2511,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2430,6 +2523,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Level Review", titleAr:"مراجعة المستوى",
         text:"One more question!", textAr:"سؤال آخر!",
         quiz:{
@@ -2496,6 +2590,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"city",
+        bgImage:"challenge",
         title:"Learn One Companion's Story",
         text:"Pick one companion from this level and learn more about their life. How did they become Muslim? What did they sacrifice for the Prophet? Share their story with your family. The more we know the companions, the more we love them and want to be like them!",
         challenge:{
@@ -2505,6 +2600,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2566,6 +2662,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"city",
+        bgImage:"challenge",
         title:"Be a Builder Like the Caliphs",
         text:"Each of the four Caliphs built something that benefited the Ummah. Abu Bakr preserved the Quran. Umar built cities and systems. Uthman unified the Ummah on one Quran. Ali spread knowledge. What can you build for Islam this week? Learn a new surah, teach a friend about Islam, or do a good deed that will help others. Even a small contribution is valuable!",
         challenge:{
@@ -2575,6 +2672,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2586,6 +2684,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"city",
+        bgImage:"quiz",
         title:"Level Review", titleAr:"مراجعة المستوى",
         text:"One more question!", textAr:"سؤال آخر!",
         quiz:{
@@ -2647,6 +2746,7 @@ const LEVELS = [
       },
       {
         type:"challenge", scene:"city",
+        bgImage:"challenge",
         title:"Fun Fact Challenge",
         text:"Share one of these fun facts with a family member or friend today! Tell them how old the Prophet was when he got the first revelation, or how many Ramadans he fasted, or how many children he had. When you share knowledge, you earn rewards too! the Prophet said: <em>'Convey from me, even if it is one ayah.'</em>",
         source:"Riyad as-Salihin 1380",
@@ -2657,6 +2757,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Quick Quiz",
         text:"Let's see what you remember!",
         quiz:{
@@ -2668,6 +2769,7 @@ const LEVELS = [
       },
       {
         type:"quiz", scene:"desert",
+        bgImage:"quiz",
         title:"Level Review", titleAr:"مراجعة المستوى",
         text:"One more question!", textAr:"سؤال آخر!",
         quiz:{
@@ -2700,7 +2802,9 @@ let state = {
   unlockedAchievements:[],
   quizCorrect:0,
   challengesDone:0,
-  language:'en'
+  language:'en',
+  userName:'',
+  setupDone:false
 };
 
 // Translation system
@@ -2710,9 +2814,9 @@ const LANG={
     homeTitle:"The Prophet's Story",
     homeSub:"Learn about the Prophet ﷺ and Islam",
     homeSub:"Learn about the Prophet ﷺ and Islam",
-    greeting:"Good morning, curious learner!",
-    greeting2:"Good afternoon, curious learner!",
-    greeting3:"Good evening, curious learner!",
+    greeting:"Good morning, {name}!",
+    greeting2:"Good afternoon, {name}!",
+    greeting3:"Good evening, {name}!",
     streak:"Day Streak",
     days:"days",
     stars:"Stars",
@@ -2801,15 +2905,25 @@ const LANG={
     levelUpMsg:"You reached Level ",
     keepGoing:"! Keep going!",
     points:"points",
+    mustAnswer:"You must answer the question!",
+    tenStars:"10 stars",
+    nameTitle:"What's your name?",
+    nameDesc:"I'd love to get to know you!",
+    nameHint:"You can tap your name on the home screen to change it later.",
+    namePlaceholder:"Enter your name...",
+    nameSave:"Save",
+    changeName:"Change name",
+    langPickTitle:"Choose your language",
+    langPickDesc:"You can switch anytime from the home screen.",
   },
   ar:{
     appTitle:"السيرة النبوية والإسلام | مغامرة تعليمية",
     homeTitle:"قصة النبي",
     homeSub:"تعلّم عن النبي ﷺ والإسلام",
     homeSub:"تعلّم عن النبي ﷺ والإسلام",
-    greeting:"صباح الخير أيها المتعلم الفضولي!",
-    greeting2:"مساء الخير أيها المتعلم الفضولي!",
-    greeting3:"مساء الخير أيها المتعلم الفضولي!",
+    greeting:"صباح الخير, {name}!",
+    greeting2:"مساء الخير, {name}!",
+    greeting3:"مساء الخير, {name}!",
     streak:"عدد الأيام المتتالية",
     days:"أيام",
     stars:"النجوم",
@@ -2898,6 +3012,16 @@ const LANG={
     levelUpMsg:"لقد وصلت إلى المستوى ",
     keepGoing:"! استمر!",
     points:"نقاط",
+    mustAnswer:"يجب عليك الإجابة على السؤال!",
+    tenStars:"10 نجوم",
+    nameTitle:"ما اسمك؟",
+    nameDesc:"أود أن أتعرف عليك!",
+    nameHint:"يمكنك النقر على اسمك في الشاشة الرئيسية لتغييره لاحقاً.",
+    namePlaceholder:"أدخل اسمك...",
+    nameSave:"حفظ",
+    changeName:"تغيير الاسم",
+    langPickTitle:"اختر لغتك",
+    langPickDesc:"يمكنك التبديل في أي وقت من الشاشة الرئيسية.",
   }
 };
 function __(k){const l=LANG[state.language]||LANG.en;return l[k]||LANG.en[k]||k}
@@ -3668,6 +3792,8 @@ function loadState(){
       state.quizCorrect=data.quizCorrect||0;
       state.challengesDone=data.challengesDone||0;
       state.language=data.language||'en';
+      state.userName=data.userName||'';
+      state.setupDone=data.setupDone||false;
     }
   }catch(e){}
 }
@@ -3689,7 +3815,9 @@ function saveState(){
       unlockedAchievements:state.unlockedAchievements,
       quizCorrect:state.quizCorrect,
       challengesDone:state.challengesDone,
-      language:state.language
+      language:state.language,
+      userName:state.userName,
+      setupDone:state.setupDone
     }));
   }catch(e){}
 }
@@ -3731,7 +3859,9 @@ function updateUIText(){
     const h=new Date().getHours();
     const em=h<12?'🌅':h<18?'☀️':'🌙';
     const key=h<12?'greeting':h<18?'greeting2':'greeting3';
-    g.innerHTML='<span class="greeting-emoji">'+em+'</span> '+__(key);
+    const fallback=state.language==='ar'?'أيها المتعلم الفضولي':'curious learner';
+    const displayName=state.userName||fallback;
+    g.innerHTML='<span class="greeting-emoji">'+em+'</span> '+__(key).replace('{name}',displayName)+'<span class="edit-icon">&#9998;</span>';
   }
 }
 function renderHome(){
@@ -3758,6 +3888,64 @@ function updateHeartsDisplay(){
   if(ss)ss.textContent=state.totalStars;
 }
 
+// ==================== NAME PROMPT ====================
+function showNamePrompt(){
+  document.getElementById('nameOverlay').classList.add('show');
+  document.getElementById('nameDialog').classList.add('show');
+  document.getElementById('nameTitle').textContent=__('nameTitle');
+  document.getElementById('nameDesc').textContent=__('nameDesc');
+  document.getElementById('nameHint').textContent=__('nameHint');
+  const input=document.getElementById('nameInput');
+  input.placeholder=__('namePlaceholder');
+  input.value=state.userName||'';
+  input.focus();
+  input.select();
+  document.getElementById('nameBtn').textContent=__('nameSave');
+}
+function hideNamePrompt(){
+  document.getElementById('nameOverlay').classList.remove('show');
+  document.getElementById('nameDialog').classList.remove('show');
+}
+function saveUserName(){
+  const input=document.getElementById('nameInput');
+  const name=input.value.trim();
+  if(name){
+    state.userName=name;
+    saveState();
+    hideNamePrompt();
+    updateGreeting();
+    // also update the text in updateUIText area
+    const g=document.getElementById('greetingText');
+    if(g){
+      const h=new Date().getHours();
+      const em=h<12?'🌅':h<18?'☀️':'🌙';
+      const key=h<12?'greeting':h<18?'greeting2':'greeting3';
+      const fallback=state.language==='ar'?'أيها المتعلم الفضولي':'curious learner';
+      const displayName=state.userName||fallback;
+      g.innerHTML='<span class="greeting-emoji">'+em+'</span> '+__(key).replace('{name}',displayName)+'<span class="edit-icon">&#9998;</span>';
+    }
+  }
+}
+
+// ==================== LANGUAGE PICKER ====================
+function showLanguagePicker(){
+  document.getElementById('langOverlay').classList.add('show');
+  document.getElementById('langDialog').classList.add('show');
+}
+function hideLanguagePicker(){
+  document.getElementById('langOverlay').classList.remove('show');
+  document.getElementById('langDialog').classList.remove('show');
+}
+function selectLanguage(lang){
+  state.language=lang;
+  state.setupDone=true;
+  saveState();
+  hideLanguagePicker();
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  setTimeout(()=>showNamePrompt(), 400);
+}
+
 // ==================== SHOP ====================
 function showShop(){
   renderShop();
@@ -3780,7 +3968,7 @@ function renderShop(){
       <div class="shop-info">
         <div class="shop-name">${state.language==='ar'&&lv.titleAr?lv.titleAr:lv.title}</div>
         <div class="shop-desc">${state.language==='ar'&&lv.descAr?lv.descAr:lv.desc}</div>
-        ${owned?'<div class="shop-price owned">'+__('owned')+'</div>':'<div class="shop-price">&#11088; 10 stars</div>'}
+        ${owned?'<div class="shop-price owned">'+__('owned')+'</div>':'<div class="shop-price">&#11088; '+__('tenStars')+'</div>'}
       </div>
       ${btnHtml}
     </div>`;
@@ -3921,8 +4109,7 @@ function _renderSlideContent(slide,total){
   const sceneEl=document.getElementById('slideScene');
   const mappedScene=slide.scene==='mosque'||slide.scene==='masjid-nabawi'?'night':slide.scene;
   sceneEl.className='slide-scene scene-'+mappedScene;
-  if(slide.bgImage){sceneEl.style.backgroundImage='url('+slide.bgImage+')';sceneEl.style.backgroundSize='cover';sceneEl.style.backgroundPosition='center'}else{sceneEl.style.backgroundImage=''}
-  sceneEl.innerHTML=getSceneHTML(slide.scene);
+  if(slide.bgImage){sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';sceneEl.style.backgroundSize='cover';sceneEl.style.backgroundPosition='center';sceneEl.innerHTML=''}else{sceneEl.style.backgroundImage='';sceneEl.innerHTML=getSceneHTML(slide.scene)}
 
   // Title
   const lv=state.currentLevel,sl=state.currentSlide;
@@ -4333,7 +4520,7 @@ function nextSlide(){
     const fb=document.getElementById('quizFeedback');
     if(fb){
       fb.className='quiz-feedback show hint';
-      fb.innerHTML='&#128161; You must answer the question!';
+      fb.innerHTML='&#128161; '+__('mustAnswer');
     }
     return;
   }
@@ -4376,7 +4563,7 @@ function finishLevel(){
     const fb=document.getElementById('quizFeedback');
     if(fb){
       fb.className='quiz-feedback show hint';
-      fb.innerHTML='&#128161; You must answer the question!';
+      fb.innerHTML='&#128161; '+__('mustAnswer');
     }
     return;
   }
@@ -4487,6 +4674,8 @@ const ACTION_MAP = {
   'shop-home':     ()=>showScreen('screen-home'),
   'close-notif':   ()=>{ closeNotif(); if(window.notifAction){ const a=window.notifAction; window.notifAction=null; a(); } },
   'toggle-lang':   ()=>toggleLanguage(),
+  'show-name-prompt': ()=>showNamePrompt(),
+  'close-name':    ()=>hideNamePrompt(),
 };
 function toggleLanguage(){
   state.language=state.language==='ar'?'en':'ar';
@@ -4522,6 +4711,12 @@ document.addEventListener('click', e => {
     return;
   }
   if (action === 'buy-hearts') { buyHearts(); return; }
+  if (action === 'save-name') { saveUserName(); return; }
+  if (action === 'pick-lang-en') { selectLanguage('en'); return; }
+  if (action === 'pick-lang-ar') { selectLanguage('ar'); return; }
+});
+document.getElementById('nameInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); saveUserName(); }
 });
 // Also handle touchend for fastest possible response on iOS
 document.addEventListener('touchend', e => {
@@ -4919,7 +5114,9 @@ function updateGreeting() {
   else if (hour < 20) { emoji = '🌆'; }
   else { emoji = '🌙'; }
   const key = hour < 12 ? 'greeting' : hour < 17 ? 'greeting2' : hour < 20 ? 'greeting3' : 'greeting';
-  el.innerHTML = `<span class="greeting-emoji">${emoji}</span> ${__(key)}`;
+  const fallback = state.language === 'ar' ? 'أيها المتعلم الفضولي' : 'curious learner';
+  const displayName = state.userName || fallback;
+  el.innerHTML = `<span class="greeting-emoji">${emoji}</span> ${__(key).replace('{name}', displayName)}<span class="edit-icon">&#9998;</span>`;
 }
 
 // ==================== OVERRIDE EXISTING FUNCTIONS FOR INTEGRATION ====================
@@ -4998,7 +5195,7 @@ finishLevel = function() {
     const fb=document.getElementById('quizFeedback');
     if(fb){
       fb.className='quiz-feedback show hint';
-      fb.innerHTML='&#128161; You must answer the question!';
+      fb.innerHTML='&#128161; '+__('mustAnswer');
     }
     return;
   }
@@ -5088,6 +5285,11 @@ document.addEventListener('click', e => {
 
 // ==================== ENHANCED INIT ====================
 loadState();
+if(!state.setupDone){
+  setTimeout(()=>showLanguagePicker(), 500);
+} else if(!state.userName){
+  setTimeout(()=>showNamePrompt(), 500);
+}
 updateLevelUnlocks();
 renderHome();
 renderLevels();
