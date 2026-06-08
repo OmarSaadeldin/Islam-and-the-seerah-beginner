@@ -1269,7 +1269,7 @@ body{
   <div class="lang-desc" id="langPickDesc">You can switch anytime from the home screen.</div>
   <div class="lang-options">
     <button class="lang-opt" data-action="pick-lang-en">&#127468;&#127463; English</button>
-    <button class="lang-opt" data-action="pick-lang-ar">&#127462;&#127465; العربية</button>
+    <button class="lang-opt" data-action="pick-lang-ar">&#127480;&#127462; العربية</button>
   </div>
 </div>
 
@@ -3918,7 +3918,7 @@ function saveUserName(){
     state.userName=name;
     saveState();
     hideNamePrompt();
-    updateGreeting();
+    renderHome();
     // also update the text in updateUIText area
     const g=document.getElementById('greetingText');
     if(g){
