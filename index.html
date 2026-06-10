@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
 <title>Seerah of the Prophet and Islam | Learning Adventure</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -45,17 +45,17 @@ body{
   background:var(--bg);
   color:var(--text);
   display:flex;justify-content:center;align-items:center;
-  min-height:100vh;overflow:hidden;
+  min-height:100vh;min-height:100dvh;overflow:hidden;
 }
 #app{
-  width:100%;max-width:480px;height:100vh;max-height:860px;
+  width:100%;max-width:480px;height:100vh;height:var(--app-height, 100dvh);max-height:860px;
   position:relative;overflow:hidden;
   background:var(--bg);
   box-shadow:0 0 60px rgba(0,0,0,0.08);
   display:flex;flex-direction:column;
 }
 @media(min-width:481px){
-  #app{border-radius:32px;height:90vh;margin:20px auto}
+  #app{border-radius:32px;height:90vh;height:var(--app-height, 90dvh);margin:20px auto}
 }
 
 /* SCREENS */
@@ -241,6 +241,9 @@ body{
 .slide-scene{
   height:140px;position:relative;overflow:hidden;
 }
+.slide-scene.loading{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f0,#e0e0e0);animation:sceneShimmer 1s ease-in-out infinite}
+@keyframes sceneShimmer{0%,100%{opacity:1}50%{opacity:0.6}}
+.scene-loader{font-size:36px;animation:loadingPulse 1.2s ease-in-out infinite;opacity:0.5}
 @keyframes sceneFade{from{opacity:0.4}to{opacity:1}}
 .slide-scene .scene-inner{animation:sceneFade 0.45s cubic-bezier(0.16,1,0.3,1)}
 @media(min-width:481px){.slide-scene{height:200px}}
@@ -1372,9 +1375,9 @@ const LEVELS = [
         bgImage:"L1S1",
         titleAr:"تعظيم الله ﷻ والنبي ﷺ",
         text:"You will see the symbol <em>&#65018;</em> after the name of Prophet Muhammad ﷺ. It is called <em>sallallahu alayhi wa sallam</em>, meaning 'peace and blessings of Allah ﷻ be upon him.' Muslims say this whenever they hear his name, as a way of showing love and respect. Allah ﷻ says in the Quran: <em>'Indeed, Allah ﷻ confers blessing upon the Prophet, and His angels ask Him to do so. O you who believe, ask blessings upon him and greet him with peace.'</em> Every time you see ﷺ, remember to say it too! Similarly, after the name of <em>Allah ﷻ</em> you will see the symbol <em>&#65019;</em> (<strong>&#65019;</strong>). It stands for <em>Jalla Jalalouhou</em> (جل جلاله), meaning 'Glorious is His Glory' or 'May His Glory be Glorified.' Muslims say this to glorify Allah ﷻ and acknowledge His majesty and perfection. Every time you see &#65019;, remember to say <em>Jalla Jalalouhou</em>!",
-        textAr:"سترى الرمز <em>&#65018;</em> بعد اسم النبي محمد ﷺ. يسمى <em>صلى الله ﷻ عليه وسلم</em>. يقوله المسلمون كلما سمعوا اسمه تعبيراً عن الحب والاحترام. يقول الله ﷻ في القرآن: <em>'إن الله ﷻ وملائكته يصلون على النبي، يا أيها الذين آمنوا صلوا عليه وسلموا تسليماً.'</em> كلما رأيت &#65018;، تذكر أن تقول: <em>صلى الله ﷻ عليه وسلم</em>! وكذلك بعد اسم <em>الله ﷻ</em> سترى الرمز <em>&#65019;</em> (<strong>&#65019;</strong>). وهو يعني <em>جل جلاله</em>، أي تعظيم الله ﷻ وإجلاله. يقوله المسلمون لتعظيم الله ﷻ والاعتراف بعظمته وكماله. كلما رأيت &#65019;، تذكر أن تقول: <em>جل جلاله</em>!",
+        textAr:"سترى الرمز <em>&#65018;</em> بعد اسم النبي محمد ﷺ. يسمى <em>صلى الله ﷻ عليه وسلم</em>. يقوله المسلمون كلما سمعوا اسمه تعبيراً عن الحب والاحترام. يقول الله ﷻ في القرآن: <em>'إِنَّ ٱللَّهَ وَمَلَـٰٓئِكَتَهُۥ يُصَلُّونَ عَلَى ٱلنَّبِىِّ ۚ يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ صَلُّوا۟ عَلَيْهِ وَسَلِّمُوا۟ تَسْلِيمًا.'</em> كلما رأيت &#65018;، تذكر أن تقول: <em>صلى الله ﷻ عليه وسلم</em>! وكذلك بعد اسم <em>الله ﷻ</em> سترى الرمز <em>&#65019;</em> (<strong>&#65019;</strong>). وهو يعني <em>جل جلاله</em>، أي تعظيم الله ﷻ وإجلاله. يقوله المسلمون لتعظيم الله ﷻ والاعتراف بعظمته وكماله. كلما رأيت &#65019;، تذكر أن تقول: <em>جل جلاله</em>!",
         source:"Quran 33:56",
-        sourceAr:"القرآن 33:56"
+        sourceAr:"القرآن <bdi dir=\"ltr\">33:56</bdi>"
       },
       {
         type:"info", scene:"custom",
@@ -1384,7 +1387,7 @@ const LEVELS = [
         text:"In the <em>Year of the Elephant</em> (570 CE), something amazing happened in the desert land of Makkah. An army with elephants came to attack Makkah, but tiny birds carrying small stones defeated them! Allah ﷻ protected Makkah. In this blessed year, our beloved Prophet Muhammad ﷺ was born. Makkah rested among sandy hills where the sun was warm and the stars were bright at night.",
         textAr:"في <em>عام الفيل</em> (570 م)، حدث شيء مذهل في أرض مكة. جاء جيش مع الفيلة لهدم الكعبة، لكن طيوراً صغيرة تحمل حجارة صغيرة هزمتهم! حمى الله ﷻ مكة. في هذا العام المبارك، وُلد نبينا الحبيب محمد ﷺ.",
         source:"Surah Al-Fil 105:1-5, Jami' at-Tirmidhi 3619",
-        sourceAr:"سورة الفيل 105:1-5، جامع الترمذي 3619"
+        sourceAr:"سورة الفيل <bdi dir=\"ltr\">105:1-5</bdi>، جامع الترمذي <bdi dir=\"ltr\">3619</bdi>"
       },
       {
         type:"info", scene:"custom",
@@ -1394,14 +1397,15 @@ const LEVELS = [
         text:"Prophet Muhammad ﷺ was born on a Monday in the month of Rabi' al-Awwal. His mother <em>Amina</em> was overjoyed. Light filled the room, and the world became brighter. His father Abdullah had passed away before he was born. When asked about fasting on Mondays, the Prophet ﷺ said: <em>'That is the day on which I was born and the day on which I received Revelation.'</em>",
         textAr:"ولد النبي محمد ﷺ يوم الاثنين في شهر ربيع الأول. فرحت أمه <em>آمنة</em> فرحاً عظيماً. امتلأت الغرفة نوراً، وأصبح العالم أكثر إشراقاً. كان والده عبد الله قد توفي قبل ولادته. عندما سُئل عن صيام الاثنين، قال النبي ﷺ: <em>'ذاك يوم ولدت فيه، وأنزل علي فيه.'</em>",
         source:"Riyad as-Salihin 1255",
-        sourceAr:"رياض الصالحين 1255"
+        sourceAr:"رياض الصالحين <bdi dir=\"ltr\">1255</bdi>"
       },
       {
         type:"info", scene:"custom",
         bgImage:"L1S4",
         title:"Growing Up in the Desert",
         text:"The Prophet ﷺ was sent to the desert as a baby to grow strong and healthy. A kind lady named <em>Halima</em> took care of him. The desert had fresh air, clear skies, and beautiful sand dunes. His years with Halima were full of blessings - even the sheep gave more milk! Halima said: <em>'I saw blessings in everything after he came to us.'</em>",
-        source:"Sahih Muslim 2362, The Sealed Nectar (p. 56)"
+        source:"The Sealed Nectar (p. 56)",
+        sourceAr:"الرحيق المختوم (ص <bdi dir=\"ltr\">56</bdi>)"
       },
       {
         type:"challenge",
@@ -1421,7 +1425,7 @@ const LEVELS = [
         bgImage:"L1S6",
         title:"Back to His Mother", titleAr:"وفاة أم النبي",
         text:"After a few years, Muhammad ﷺ returned to live with his mother <em>Amina</em> in Makkah. When he was six years old, she took him to Yathrib (Madinah) to visit his relatives. On the way back to Makkah, Amina fell ill and passed away. he had lost his father before he was born, and now his mother. She was buried at a place called <em>al-Abwa'</em>. The faithful servant <em>Umm Ayman</em> took him to his grandfather Abdul Muttalib. Even through such sadness, he remained patient and brave.",
-        textAr:"عندما كان النبي ﷺ في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. لقد فقد أباه قبل ولادته، وأمه الآن. دُفنت في مكان يسمى <em>الأبواء</em>. أخذته <em>أم أيمن</em>، خادمة أبيه الأمينة، إلى جده عبد المطلب. ورغم هذا الحزن، بقي صبوراً وشجاعاً.",
+        textAr:"بعد بضع سنوات، عاد محمد ﷺ للعيش مع أمه آمنة في مكة. عندما كان في السادسة من عمره، سافرت به أمه آمنة إلى يثرب (المدينة المنورة) لزيارة أقاربه. في طريق العودة إلى مكة، مرضت آمنة وتوفيت. لقد فقد أباه قبل ولادته، وأمه الآن. دُفنت في مكان يسمى <em>الأبواء</em>. أخذته <em>أم أيمن</em>، خادمة أبيه الأمينة، إلى جده عبد المطلب. ورغم هذا الحزن، بقي صبوراً وشجاعاً.",
         source:"The Sealed Nectar (p. 58)"
       },
       {
@@ -1429,8 +1433,9 @@ const LEVELS = [
         bgImage:"L1S7",
         title:"Under His Grandfather's Care", titleAr:"الجد الحنون والعيش مع أبي طالب",
         text:"His grandfather <em>Abdul Muttalib</em> loved him dearly. He was the leader of Makkah and treated Muhammad ﷺ with great care. They would sit together by the Kaaba, and Abdul Muttalib would say, 'This grandson of mine will be very special.' But Abdul Muttalib was old. He passed away when Muhammad ﷺ was eight. Muhammad ﷺ felt alone again, but his uncle <em>Abu Talib</em> took him in. Though poor, Abu Talib loved his nephew like a son. Muhammad ﷺ worked as a shepherd to help his uncle. He would gaze at the stars and sky, pondering life. He became known among his people as <em>As-Sadiq</em> (the Truthful) and <em>Al-Amin</em> (the Trustworthy). Everyone respected him for his honor and integrity.",
-        textAr:"أحب <em>عبد المطلب</em> حفيده كثيراً. كان يجلسه معه على فراش الشرف تحت ظل الكعبة. كان يقول: «إن لابني هذا شأناً عظيماً». لكن عبد المطلب كان كبيراً في السن. توفي عندما كان محمد ﷺ في الثامنة من عمره. شعر محمد ﷺ بالوحدة مرة أخرى، لكن عمه <em>أبو طالب</em> اعتنى به. كان أبو طالب فقيراً لكنه أحب ابن أخيه كثيراً. كان يعامله كابنه. عمل محمد ﷺ راعياً للغنم لمساعدة عمه. كان يتأمل النجوم والسماء، ويفكر في الحياة. أصبح معروفاً بين قومه ب <em>الصادق الأمين</em> - الصادق والأمين. كان الجميع يحترمه لشرفه ونزاهته.",
-        source:"The Sealed Nectar (p. 59), Ibn Hisham"
+        textAr:"أحب <em>عبد المطلب</em> حفيده كثيراً. كان سيد مكة وكان يجلسه معه على فراش الشرف تحت ظل الكعبة. كان يقول: «إن لابني هذا شأناً عظيماً». لكن عبد المطلب كان كبيراً في السن. توفي عندما كان محمد ﷺ في الثامنة من عمره. شعر محمد ﷺ بالوحدة مرة أخرى، لكن عمه <em>أبو طالب</em> اعتنى به. كان أبو طالب فقيراً لكنه أحب ابن أخيه كثيراً. كان يعامله كابنه. عمل محمد ﷺ راعياً للغنم لمساعدة عمه. كان يتأمل النجوم والسماء، ويفكر في الحياة. أصبح معروفاً بين قومه ب<em>الصادق الأمين</em>. كان الجميع يحترمه لشرفه ونزاهته.",
+        source:"The Sealed Nectar (p. 59)",
+        sourceAr:"الرحيق المختوم (ص <bdi dir=\"ltr\">59</bdi>)"
       },
       {
          type:"quiz",
@@ -1452,7 +1457,7 @@ const LEVELS = [
           text:"Before Allah ﷻ sent him as a prophet, Muhammad ﷺ worked as a <em>shepherd</em>, looking after sheep in the hills around Makkah. He later worked as a <em>merchant</em>, traveling with trade caravans to distant lands. The Prophet ﷺ said: <em>'Allah ﷻ did not send any prophet who was not a shepherd.'</em> He was known for his honesty in all his work.",
           textAr:"قبل أن يرسله الله ﷻ نبياً، عمل محمد ﷺ <em>راعياً للغنم</em> في تلال مكة. ثم عمل <em>تاجراً</em>، يسافر مع قوافل التجارة إلى بلاد بعيدة. قال النبي ﷺ: <em>'ما بعث الله ﷻ نبياً إلا رعى الغنم.'</em> كان معروفاً بأمانته في كل أعماله.",
          source:"Sahih al-Bukhari 2262, The Sealed Nectar (p. 66)",
-         sourceAr:"صحيح البخاري 2262، الرحيق المختوم (ص 66)"
+         sourceAr:"صحيح البخاري <bdi dir=\"ltr\">2262</bdi>، الرحيق المختوم (ص <bdi dir=\"ltr\">66</bdi>)"
       },
       {
          type:"quiz",
@@ -1481,19 +1486,19 @@ const LEVELS = [
         title:"The Honest & Trustworthy",
         titleAr:"الصادق الأمين",
         text:"As Muhammad ﷺ grew up, everyone called him <em>Al-Amin</em> (the Trustworthy) and <em>As-Sadiq</em> (the Truthful). People would leave their valuables with him because they trusted him completely. He was known for his honesty, kindness, and good manners. The Quran says: <em>'And indeed, you are of a great moral character.'</em>",
-        textAr:"كبر النبي محمد ﷺ وعُرف بين قومه ب<em>الأمين</em> و<em>الصادق</em>. كان الناس يتركون أماناتهم عنده لأنه كان صادقاً وأميناً. عُرف بأخلاقه العالية وحسن معاملته. يقول القرآن: <em>'وإنك لعلى خلق عظيم.'</em>",
+        textAr:"كبر النبي محمد ﷺ وعُرف بين قومه ب<em>الأمين</em> و<em>الصادق</em>. كان الناس يتركون أماناتهم عنده لأنه كان صادقاً وأميناً. عُرف بأخلاقه العالية وحسن معاملته. يقول القرآن: <em>'وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍۢ.'</em>",
         source:"Quran 68:4, The Sealed Nectar (p. 68)",
-        sourceAr:"القرآن 68:4، الرحيق المختوم (ص 68)"
+        sourceAr:"القرآن <bdi dir=\"ltr\">68:4</bdi>، الرحيق المختوم (ص <bdi dir=\"ltr\">68</bdi>)"
       },
       {
         type:"info", scene:"city",
         bgImage:"L2S2",
-        title:"The Prophet's Kind Heart",
-        titleAr:"قلب النبي الرحيم",
-        text:"Prophet Muhammad ﷺ was always helping others. He visited the sick, helped the poor and needy, and even mended his own clothes. He taught that helping others is one of the best deeds a person can do. He said: <em>'Allah ﷻ continues to help His servant as long as that servant helps his brother.'</em> Whether it was carrying goods for an elderly person or smiling at a child, his kindness had no limits.",
-        textAr:"كان النبي ﷺ دائماً يساعد الآخرين. كان يزور المرضى، ويساعد الفقراء والمحتاجين، وكان يرقع ثيابه بنفسه. علّم أن مساعدة الآخرين من أفضل الأعمال. قال: <em>'والله ﷻ في عون العبد ما كان العبد في عون أخيه.'</em> سواء كان يحمل بضائع لرجل مسن أو يبتسم لطفل، كان لطفه بلا حدود.",
+        title:"The Prophet's ﷺ Kind Heart",
+        titleAr:"قلب النبي ﷺ الرحيم",
+        text:"Prophet Muhammad ﷺ was always helping others. He visited the sick, helped the poor and needy, and even mended his own clothes. He taught that helping others is one of the best deeds a person can do. He said: <em>'Allah continues to help His servant as long as that servant helps his brother.'</em> Whether it was carrying goods for an elderly person or smiling at a child, his kindness had no limits.",
+        textAr:"كان النبي ﷺ دائماً يساعد الآخرين. كان يزور المرضى، ويساعد الفقراء والمحتاجين، وكان يرقع ثيابه بنفسه. علّم أن مساعدة الآخرين من أفضل الأعمال. قال: <em>'والله في عون العبد ما كان العبد في عون أخيه.'</em> سواء كان يحمل بضائع لرجل مسن أو يبتسم لطفل، كان لطفه بلا حدود.",
         source:"Sahih Muslim 2699, The Sealed Nectar (p. 70)",
-        sourceAr:"صحيح مسلم 2699، الرحيق المختوم (ص 70)"
+        sourceAr:"صحيح مسلم <bdi dir=\"ltr\">2699</bdi>، الرحيق المختوم (ص <bdi dir=\"ltr\">70</bdi>)"
       },
       {
         type:"challenge",
@@ -1512,37 +1517,37 @@ const LEVELS = [
           successMsgAr:"&#128591; لنكن عوناً!"
         },
         source:"Sahih al-Bukhari 2442, Sahih Muslim 2699",
-        sourceAr:"صحيح البخاري 2442، صحيح مسلم 2699"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">2442</bdi>، صحيح مسلم <bdi dir=\"ltr\">2699</bdi>"
       },
       {
         type:"info", scene:"city",
         bgImage:"L2S4",
         title:"Marriage to Khadija",
         titleAr:"الزواج من خديجة",
-        text:"At age <em>25</em>, Muhammad ﷺ married <em>Khadija bint Khuwaylid</em>, a kind and noble businesswoman. She was older than him and proposed marriage because of his honesty. When the first revelation came, Khadija believed him immediately and became the <em>first person</em> to accept Islam. The Prophet ﷺ often praised her and said: <em>'She believed in me when people disbelieved, and she supported me with her wealth when people deprived me.'</em>",
+        text:"At age <em>25</em>, Muhammad ﷺ married <em>Khadija bint Khuwaylid</em>, a kind and noble businesswoman. She was older than him and proposed marriage because of his honesty. When the first revelation came, Khadija believed him immediately and became the <em>first person</em> to accept Islam. The Prophet ﷺ often praised her and said: <em>'She believed in me when people disbelieved, she confirmed my words when people rejected me, and she supported me with her wealth when people deprived me.'</em>",
         textAr:"في سن <em>الخامسة والعشرين</em>، تزوج النبي ﷺ <em>خديجة بنت خويلد</em>، سيدة أعمال كريمة ونبيلة. كانت أكبر منه سناً وعرضت عليه الزواج لأمانته. عندما نزل الوحي، آمنت به خديجة فوراً وكانت <em>أول شخص</em> يسلم. كان النبي ﷺ يثني عليها ويقول: <em>'آمنت بي إذ كفر بي الناس، وصدقتني إذ كذبني الناس، وواستني بمالها إذ حرمني الناس.'</em>",
         source:"Sahih al-Bukhari 3, Musnad Ahmad 24864",
-        sourceAr:"صحيح البخاري 3، مسند أحمد 24864"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3</bdi>، مسند أحمد <bdi dir=\"ltr\">24864</bdi>"
       },
       {
         type:"info", scene:"cave",
         bgImage:"L2S5",
         title:"The First Revelation",
         titleAr:"بدء الوحي",
-        text:"Muhammad ﷺ often went to a cave on <em>Jabal an-Nur</em> (Mountain of Light) to think and pray. One night in the month of <em>Ramadan</em>, while he was in the cave of Hira, the angel <em>Jibril</em> appeared! The angel said, '<em>Read!</em>' The Prophet ﷺ replied, 'I cannot read.' The angel embraced him firmly and said again, '<em>Read!</em>' This happened three times until the angel revealed the first verses of the Quran: <em>'Read! In the name of your Lord who created — created man from a clot. Read! And your Lord is the Most Generous.'</em> (Surah Al-Alaq 96:1-3). The Prophet was 40 years old. He was shaking with amazement and ran home to his beloved Khadija.",
-        textAr:"كان النبي ﷺ يذهب إلى غار في <em>جبل النور</em> ليتفكر ويعبد الله ﷻ. في إحدى ليالي <em>رمضان</em>، بينما كان في غار حراء، نزل عليه الملك <em>جبريل</em>! قال الملك: '<em>اقرأ!</em>' قال النبي ﷺ: 'ما أنا بقارئ.' فضمه جبريل بشدة وقال: '<em>اقرأ!</em>' تكرر هذا ثلاث مرات حتى نزلت أول آيات القرآن: <em>'اقرأ باسم ربك الذي خلق، خلق الإنسان من علق، اقرأ وربك الأكرم.'</em> (سورة العلق 96:1-3). كان عمر النبي 40 سنة. رجع إلى بيته يرتجف من هول المشهد إلى زوجته خديجة.",
+        text:"Muhammad ﷺ often went to a cave on <em>Jabal an-Nur</em> (Mountain of Light) to think and pray. One night in the month of <em>Ramadan</em>, while he was in the cave of Hira, the angel <em>Jibril</em> appeared! The angel said, '<em>Read!</em>' The Prophet ﷺ replied, 'I cannot read.' The angel embraced him firmly and said again, '<em>Read!</em>' This happened three times until the angel revealed the first verses of the Quran: <em>'Read! In the name of your Lord who created — created man from a clot. Read! And your Lord is the Most Generous.'</em> (Surah Al-Alaq 96:1-3). The Prophet ﷺ was 40 years old. He was shaking with amazement and ran home to his beloved Khadija.",
+        textAr:"كان النبي ﷺ يذهب إلى غار في <em>جبل النور</em> ليتفكر ويعبد الله ﷻ. في إحدى ليالي <em>رمضان</em>، بينما كان في غار حراء، نزل عليه الملك <em>جبريل</em>! قال الملك: '<em>ٱقْرَأْ!</em>' قال النبي ﷺ: 'ما أنا بقارئ.' فضمه جبريل بشدة وقال: '<em>ٱقْرَأْ!</em>' تكرر هذا ثلاث مرات حتى نزلت أول آيات القرآن: <em>'ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ خَلَقَ ٱلْإِنسَـٰنَ مِنْ عَلَقٍ ٱقْرَأْ وَرَبُّكَ ٱلْأَكْرَمُ.'</em> (سورة العلق <bdi dir=\"ltr\">96:1-3</bdi>). كان عمر النبي ﷺ <bdi dir=\"ltr\">40</bdi> سنة. رجع إلى بيته يرتجف من هول المشهد إلى زوجته خديجة.",
         source:"Sahih al-Bukhari 3, Surah Al-Alaq 96:1-5",
-        sourceAr:"صحيح البخاري 3، سورة العلق 96:1-5"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3</bdi>، سورة العلق <bdi dir=\"ltr\">96:1-5</bdi>"
       },
       {
         type:"info", scene:"night",
         bgImage:"L2S6",
-        title:"Khadija's Comfort & Waraqah",
+        title:"Khadija's Comfort & Waraqah ibn Nawfal",
         titleAr:"عزاء خديجة وورقة بن نوفل",
-        text:"When Muhammad ﷺ came home trembling, <em>Khadija</em> wrapped him in a blanket and comforted him. She said: <em>'By Allah ﷻ, Allah ﷻ will never disgrace you. You keep good ties with your family, help the poor, and are kind to everyone.'</em> She took him to her cousin <em>Waraqah ibn Nawfal</em>, an elderly Christian scholar who knew the scriptures. When Waraqah heard what happened, he said: 'This is the same angel that Allah ﷻ sent to Moses. I wish I were young and could be alive when your people drive you out.'",
-        textAr:"لما رجع النبي ﷺ إلى خديجة وهو يرتجف، <em>خديجة</em> لفّته في غطاء وطمأنته. قالت: <em>'والله ﷻ لا يخزيك الله ﷻ أبداً، إنك لتصل الرحم، وتصدق الحديث، وتحمل الكل، وتعين على نوائب الدهر.'</em> ذهبت به إلى ابن عمها <em>ورقة بن نوفل</em>، وكان عالماً نصرانياً يعرف الكتب السماوية. لما سمع ورقة ما حدث قال: 'هذا الناموس الذي أنزله الله ﷻ على موسى. يا ليتني فيها جذعاً، ليتني أكون حياً إذا أخرجك قومك.'",
-        source:"Sahih al-Bukhari 3",
-        sourceAr:"صحيح البخاري 3"
+        text:"When Muhammad ﷺ came home trembling, <em>Khadija</em> wrapped him in a blanket and comforted him. She said: <em>'By Allah, Allah will never let you down. You keep strong family ties, speak the truth, help the poor, entertain your guests generously, and assist those who are struck by calamity.'</em> She took him to her cousin <em>Waraqah ibn Nawfal</em>, an elderly Christian scholar who knew the scriptures. When Waraqah heard what happened, he said: 'This is the same angel that Allah sent to Moses. I wish I were young and could be alive when your people drive you out.'",
+        textAr:"لما رجع النبي ﷺ إلى خديجة وهو يرتجف، <em>خديجة</em> لفّته في غطاء وطمأنته. قالت: <em>'والله لا يخزيك الله أبداً، إنك لتصل الرحم، وتصدق الحديث، وتحمل الكل، وتقري الضيف، وتعين على نوائب الدهر.'</em> ذهبت به إلى ابن عمها <em>ورقة بن نوفل</em>، وكان عالماً نصرانياً يعرف الكتب السماوية. لما سمع ورقة ما حدث قال: 'هذا الناموس الذي أنزله الله على موسى. يا ليتني فيها جذعاً، ليتني أكون حياً إذا أخرجك قومك.'",
+source:"Sahih al-Bukhari 3 & 4953",
+         sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3</bdi> و <bdi dir=\"ltr\">4953</bdi>"
       },
       {
         type:"info", scene:"night",
@@ -1552,17 +1557,17 @@ const LEVELS = [
         text:"For the first <em>three years</em>, the Prophet ﷺ called people to Islam secretly. The first to believe were: <em>Khadija bint Khuwaylid</em> (his wife), <em>Ali ibn Abi Talib</em> (his cousin, only 10 years old), <em>Zayd ibn Haritha</em> (his adopted son), and <em>Abu Bakr as-Siddiq</em> (his best friend). Through Abu Bakr, many others accepted Islam. They would gather in secret at the home of <em>Al-Arqam ibn Abi Al-Arqam</em>, a special place known as <em>Dar al-Arqam</em>. There, in the heart of Makkah, they would learn the Quran, deepen their faith, and grow together as a community. It became a safe haven where hearts were filled with the light of Islam.",
         textAr:"في السنوات <em>الثلاث الأولى</em>، كان النبي ﷺ يدعو الناس إلى الإسلام سراً. أول من آمن: <em>خديجة بنت خويلد</em> (زوجته)، <em>علي بن أبي طالب</em> (ابن عمه وعمره 10 سنوات)، <em>زيد بن حارثة</em> (ابنه بالتبني)، <em>أبو بكر الصديق</em> (صديقه المقرب). من خلال أبي بكر، أسلم كثيرون. كانوا يجتمعون سراً في بيت <em>الأرقم بن أبي الأرقم</em>، وهو مكان عُرف باسم <em>دار الأرقم</em>. هناك، في قلب مكة، كانوا يتعلمون القرآن، ويُعمقون إيمانهم، وينمون كمجتمع واحد. كان ملاذاً آمناً تُنار فيه القلوب بنور الإسلام.",
         source:"Sahih al-Bukhari 3, The Sealed Nectar (p. 98)",
-        sourceAr:"صحيح البخاري 3، الرحيق المختوم (ص 98)"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3</bdi>، الرحيق المختوم (ص <bdi dir=\"ltr\">98</bdi>)"
       },
       {
         type:"info", scene:"city",
         bgImage:"L2S8",
         title:"The Open Call",
-        titleAr:"الدعوة العلنية",
-        text:"After three years, Allah ﷻ commanded the Prophet ﷺ: <em>'And warn your closest relatives.'</em> (Surah Ash-Shu'ara 26:214). The Prophet climbed the hill of <em>Safa</em> and called out to the people of Makkah. He said: 'If I told you there was an army behind this hill, would you believe me?' They said yes. He said: 'Then I warn you of a severe punishment.' Some believed, but many refused and opposed him.",
-        textAr:"بعد ثلاث سنوات، أمر الله ﷻ النبي ﷺ: <em>'وأنذر عشيرتك الأقربين.'</em> (سورة الشعراء 26:214). صعد النبي على جبل <em>الصفا</em> ونادى قريش. قال: 'أرأيتكم لو أخبرتكم أن خيلاً بالوادي تريد أن تغير عليكم، أكنتم مصدقي؟' قالوا: نعم. قال: 'فإني نذير لكم بين يدي عذاب شديد.' آمن بعضهم، لكن كثيرين رفضوا وعادوه.",
+         titleAr:"الدعوة العلنية",
+         text:"After three years, Allah ﷻ commanded the Prophet ﷺ: <em>'And warn your closest relatives.'</em> (Surah Ash-Shu'ara 26:214). The Prophet ﷺ climbed the hill of <em>Safa</em> and called out to the people of Makkah. He said: 'If I told you there was an army behind this hill, would you believe me?' They said yes. He said: 'Then I warn you of a severe punishment.' Some believed, but many refused and opposed him.",
+         textAr:"بعد ثلاث سنوات، أمر الله ﷻ النبي ﷺ: <em>'وَأَنذِرْ عَشِيرَتَكَ ٱلْأَقْرَبِينَ.'</em> (سورة الشعراء <bdi dir=\"ltr\">26:214</bdi>). صعد النبي ﷺ على جبل <em>الصفا</em> ونادى قريش. قال: 'أرأيتكم لو أخبرتكم أن خيلاً بالوادي تريد أن تغير عليكم، أكنتم مصدقي؟' قالوا: نعم. قال: 'فإني نذير لكم بين يدي عذاب شديد.' آمن بعضهم، لكن كثيرين رفضوا وعادوه.",
         source:"Sahih al-Bukhari 4770, Surah Ash-Shu'ara 26:214",
-        sourceAr:"صحيح البخاري 4770، سورة الشعراء 26:214"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">4770</bdi>، سورة الشعراء <bdi dir=\"ltr\">26:214</bdi>"
       },
       {
         type:"info", scene:"desert",
@@ -1572,7 +1577,7 @@ const LEVELS = [
         text:"The Quraysh began to torture the Muslims terribly. The Prophet ﷺ told his followers to seek safety in <em>Abyssinia (Ethiopia)</em>, a land ruled by the just Christian king <em>Negus (Ashama)</em>. About 15 Muslims made the first migration in secret. They were welcomed with kindness and protected there. This was the <em>first hijrah</em> in the history of Islam.",
         textAr:"بدأت قريش بتعذيب المسلمين بشدة. أذن النبي ﷺ لأصحابه بالهجرة إلى <em>الحبشة (إثيوبيا)</em>، وكان يحكمها الملك النصراني العادل <em>النجاشي أصحمة</em>. هاجر نحو 15 مسلماً سراً في الهجرة الأولى. استقبلهم النجاشي بكل كرم وحماهم. كانت هذه <em>أول هجرة</em> في تاريخ الإسلام.",
         source:"Sahih al-Bukhari 3877, The Sealed Nectar (p. 112)",
-        sourceAr:"صحيح البخاري 3877، الرحيق المختوم (ص 112)"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3877</bdi>، الرحيق المختوم (ص <bdi dir=\"ltr\">112</bdi>)"
       },
       {
          type:"quiz",
@@ -1590,7 +1595,7 @@ const LEVELS = [
           correct:1
         },
         source:"Sahih al-Bukhari 3",
-        sourceAr:"صحيح البخاري 3"
+        sourceAr:"صحيح البخاري <bdi dir=\"ltr\">3</bdi>"
       }
     ]
   },
@@ -1601,20 +1606,26 @@ const LEVELS = [
     scene:"desert", unlocked:false,
     slides:[
       {
-        type:"info", scene:"night",
-        title:"Life Becomes Difficult",
-        text:"For years, Prophet Muhammad ﷺ invited people to believe in one Allah ﷻ. Many people in Makkah refused to listen and made life very hard for the Muslims. But the Prophet ﷺ never gave up. He continued teaching with patience and kindness. Allah ﷻ said: <em>'And We have not sent you except as a mercy to the worlds.'</em>",
-        source:"Quran 21:107"
-      },
+          type:"info", scene:"night", bgImage:"L3S1",
+          title:"Life Becomes Difficult",
+         titleAr:"الحياة تصبح صعبة",
+         text:"For years, Prophet Muhammad ﷺ invited the people to worship one god (Allah ﷻ). Many people in Makkah refused to listen and made life very hard for the Muslims. But the Prophet ﷺ never gave up. He continued teaching with patience and kindness. Allah said: <em>'And We have not sent you except as a mercy to the worlds.'</em>",
+         textAr:"لسنوات، دعا النبي محمد ﷺ الناس لعبادة إله واحد (الله ﷻ). كثير من الناس في مكة رفضوا الاستماع وجعلوا الحياة صعبة على المسلمين. لكن النبي ﷺ لم يستسلم أبداً. استمر في التعليم بصبر ولطف. قال الله: <em>'وَمَآ أَرْسَلْنَـٰكَ إِلَّا رَحْمَةًۭ لِّلْعَـٰلَمِينَ.'</em>",
+         source:"Quran 21:107",
+         sourceAr:"القرآن <bdi dir=\"ltr\">21:107</bdi>"
+       },
       {
-        type:"info", scene:"city",
-        title:"The Year of Sorrow",
-        text:"The disbelievers of Quraysh boycotted the Muslims, cutting off food and trade. For three years, the Muslims were forced to live in a narrow valley called <em>Shi'b Abi Talib</em>, eating only leaves from trees. This terrible hardship weakened <em>Khadija</em>, the Prophet's ﷺ beloved wife, and led to her death. His uncle Abu Talib also died that same year — but as a disbeliever, which made the Prophet ﷺ even more sorrowful, as he could not save him from the Fire. The Prophet ﷺ called 619 CE the <em>Year of Sorrow</em>, yet despite his grief, he continued his mission with courage.",
-        source:"The Sealed Nectar (p. 172), Sahih al-Bukhari 5412, Sahih al-Bukhari 3884, Quran 9:113"
-      },
+          type:"info", scene:"city", bgImage:"L3S2",
+          title:"The Year of Sorrow",
+         titleAr:"عام الحزن",
+         text:"The disbelievers of Quraysh boycotted the Muslims, cutting off food and trade. For three years, the Muslims were forced to live in a narrow valley called <em>Shi'b Abi Talib</em>, eating only leaves from trees. This terrible hardship weakened <em>Khadija</em>, the Prophet's ﷺ wife, may Allah be pleased with her, and led to her death. His uncle Abu Talib also died that same year — but as a disbeliever, which made the Prophet ﷺ even more sorrowful, as he could not save him from the Fire. The Prophet ﷺ called 619 CE the <em>Year of Sorrow</em>, yet despite his grief, he continued his mission with courage.",
+         textAr:"قاطعت قريش المسلمين، وقطعت عنهم الطعام والتجارة. لمدة ثلاث سنوات، أُجبر المسلمون على العيش في <em>شعب أبي طالب</em>، وهو وادٍ ضيق، يأكلون ورق الشجر فقط. هذا البلاء الشديد أضعف <em>خديجة</em>، زوجة النبي ﷺ رضي الله عنها، وأدى إلى وفاتها. كما توفي عمه أبو طالب في نفس العام - لكنه مات على الكفر، مما زاد حزن النبي ﷺ لأنه لم يستطع إنقاذه من النار. سمى النبي ﷺ عام 619م <em>عام الحزن</em>، ورغم حزنه، استمر في رسالته بشجاعة.",
+         source:"The Sealed Nectar (p. 172), Sahih al-Bukhari 5412, Sahih al-Bukhari 3884, Quran 9:113",
+         sourceAr:"الرحيق المختوم (ص <bdi dir=\"ltr\">172</bdi>)، صحيح البخاري <bdi dir=\"ltr\">5412</bdi>، صحيح البخاري <bdi dir=\"ltr\">3884</bdi>، القرآن <bdi dir=\"ltr\">9:113</bdi>"
+       },
       {
-        type:"info", scene:"mountain",
-        title:"Journey to Ta'if",
+         type:"info", scene:"mountain", bgImage:"L3S3",
+         title:"Journey to Ta'if",
         text:"The Prophet ﷺ walked all the way to the city of <em>Ta'if</em> to invite people to Islam. But the people there were unkind and threw stones at him. He was hurt and bleeding. Instead of asking Allah ﷻ to punish them, he prayed: <em>'O Allah ﷻ, guide my people, for they do not know.'</em> He then found comfort in a garden where dates were offered to him.",
         source:"The Sealed Nectar (p. 176)"
       },
@@ -1632,14 +1643,16 @@ const LEVELS = [
         source:"Al-Adab al-Mufrad 380, Musnad Ahmad"
       },
       {
-        type:"info", scene:"night",
-        title:"The Night Journey (Isra)",
-        text:"One miraculous night, the Prophet ﷺ was taken from Makkah to <em>Jerusalem</em> on a special journey called <em>Al-Isra</em>. He rode a beautiful white creature called Al-Buraq, faster than light! He led all the prophets in prayer at Al-Aqsa Mosque. Allah ﷻ says: <em>'Exalted is He who took His servant by night from the Sacred Mosque to Al-Aqsa Mosque.'</em>",
-        source:"Surah Al-Isra 17:1, Sahih al-Bukhari 3207"
+         type:"info", scene:"night", bgImage:"L3S5",
+          title:"The Night Journey (Isra)",
+         titleAr:"رحلة الإسراء",
+         text:"One miraculous night, the Prophet ﷺ was taken from Makkah to <em>Jerusalem</em> on a special journey called <em>Al-Isra</em>. He rode a beautiful white creature called Al-Buraq, faster than light! He led all the prophets in prayer at Al-Aqsa Mosque. Allah ﷻ says: <em>'Exalted is He who took His servant by night from the Sacred Mosque to Al-Aqsa Mosque.'</em>",
+         textAr:"في ليلة معجزة، أُسري بالنبي ﷺ من مكة إلى <em>بيت المقدس</em> في رحلة خاصة تسمى <em>الإسراء</em>. ركب دابة بيضاء جميلة تسمى البراق، أسرع من الضوء! أم جميع الأنبياء في صلاة بالمسجد الأقصى. قال الله ﷻ: <em>'سُبْحَـٰنَ ٱلَّذِىٓ أَسْرَىٰ بِعَبْدِهِۦ لَيْلًۭا مِّنَ ٱلْمَسْجِدِ ٱلْحَرَامِ إِلَى ٱلْمَسْجِدِ ٱلْأَقْصَا.'</em>",
+         source:"Surah Al-Isra 17:1, Sahih al-Bukhari 3207"
       },
       {
-        type:"info", scene:"night",
-        title:"The Ascension (Miraj)",
+         type:"info", scene:"night", bgImage:"L3S6",
+         title:"The Ascension (Miraj)",
         text:"From Jerusalem, the Prophet ﷺ ascended through the <em>seven heavens</em> to meet Allah ﷻ. This was <em>Al-Miraj</em>. He saw paradise, met the prophets, and was given the gift of <em>five daily prayers</em> for his followers. The Prophet ﷺ said: <em>'Allah ﷻ enjoined fifty prayers, then reduced them to five.'</em> What an amazing journey!",
         source:"Sahih al-Bukhari 3207"
       },
@@ -1657,17 +1670,20 @@ const LEVELS = [
         source:"Sahih al-Bukhari 3207"
       },
       {
-        type:"info", scene:"desert",
-        title:"The People of Yathrib",
+         type:"info", scene:"desert", bgImage:"L3S8",
+         title:"The People of Yathrib",
         text:"People from the city of <em>Yathrib</em> (later called Medina) heard about the Prophet ﷺ. They believed in his message and invited him to come live with them. They promised to protect him and his followers in a solemn pledge known as the <em>Pledge of Aqaba</em>. One of them said: <em>'We jointly agreed to support Islam with all our effort.'</em> This was a new hope for the Muslims!",
         source:"Sahih al-Bukhari 3889"
       },
       {
-        type:"info", scene:"cave",
-        title:"The Cave of Thawr",
-        text:"The people of Makkah planned to hurt the Prophet ﷺ. So he and his closest friend <em>Abu Bakr</em> hid in the <em>Cave of Thawr</em> during their escape. The enemies came so close that Abu Bakr was afraid they would be seen. But the Prophet ﷺ calmed him saying: <em>'O Abu Bakr, be quiet! (For we are) two and Allah ﷻ is the Third of us.'</em> Allah ﷻ saved them, and the Quran mentions: <em>'Allah ﷻ did in fact support him.'</em>",
-        source:"Surah At-Tawbah 9:40, Sahih al-Bukhari 3922"
-      },
+          type:"info", scene:"cave", bgImage:"L3S9",
+          title:"The Cave of Thawr",
+         titleAr:"غار ثور",
+         text:"The people of Makkah planned to hurt the Prophet ﷺ. So he and his closest friend <em>Abu Bakr</em> hid in the <em>Cave of Thawr</em> during their escape. The enemies came so close that Abu Bakr was afraid they would be seen. But the Prophet ﷺ calmed him saying: <em>'O Abu Bakr, be quiet! (For we are) two and Allah is the Third of us.'</em> Allah ﷻ is with them in His protection, knowledge, and by seeing them. Allah ﷻ saved Muhammad ﷺ and his companion, and the Quran mentions: <em>'Allah did in fact support him when the disbelievers drove him out ˹of Mecca˺ and he was only one of two. While they both were in the cave, he reassured his companion, \"Do not worry; Allah is certainly with us.\"'</em>",
+         textAr:"خطط أهل مكة لإيذاء النبي ﷺ. فاختبأ هو وصديقه المقرب <em>أبو بكر</em> في <em>غار ثور</em> أثناء هروبهما. اقترب الأعداء حتى خاف أبو بكر أن يراهم أحد. لكن النبي ﷺ هدأه قائلاً: <em>'اسْكُتْ يَا أَبَا بَكْرٍ، اثْنَانِ اللَّهُ ثَالِثُهُمَا.'</em> والمعنى أن الله ﷻ معهما بحفظه وعلمه ورؤيته. نجا الله ﷻ محمداً ﷺ وصاحبه، ويذكر القرآن: <em>'فَقَدْ نَصَرَهُ ٱللَّهُ إِذْ أَخْرَجَهُ ٱلَّذِينَ كَفَرُوا۟ ثَانِىَ ٱثْنَيْنِ إِذْ هُمَا فِى ٱلْغَارِ إِذْ يَقُولُ لِصَـٰحِبِهِۦ لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا ۖ.'</em>",
+         source:"Surah At-Tawbah 9:40, Sahih al-Bukhari 3922",
+         sourceAr:"سورة التوبة <bdi dir=\"ltr\">9:40</bdi>، صحيح البخاري <bdi dir=\"ltr\">3922</bdi>"
+       },
       {
         type:"quiz",
         scene:"desert",
@@ -1787,7 +1803,7 @@ const LEVELS = [
       {
         type:"info", scene:"night",
         title:"The Illness Begins",
-        text:"After returning from the Farewell Hajj, in the month of Safar, 11 AH, the Prophet fell ill with a severe fever. He began to feel weak and in pain. He stayed in the room of his beloved wife <em>Aisha</em> (may Allah ﷻ be pleased with her). Despite the fever, he continued to lead the Muslims with strength and patience. The fever was so intense that his blessed body became very hot.",
+        text:"After returning from the Farewell Hajj, in the month of Safar, 11 AH, the Prophet fell ill with a severe fever. He began to feel weak and in pain. He stayed in the room of his wife <em>Aisha</em> (may Allah be pleased with her). Despite the fever, he continued to lead the Muslims with strength and patience. The fever was so intense that his blessed body became very hot.",
         source:"Sahih al-Bukhari 4446"
       },
       {
@@ -2906,6 +2922,7 @@ const LEVELS = [
   },
 
 ];
+
 // ==================== STATE ====================
 let state = {
   currentLevel:0,
@@ -4083,6 +4100,9 @@ function hideNamePrompt(){
 
 // ==================== LOADING SCREEN ====================
 let _loadingFactInterval = null;
+let _loadingImgId = 0;
+const _bgCache = new Set();
+let _onNameSaved = null;
 
 function showLoadingScreen(){
   const name = state.userName || (state.language==='ar'?'أيها المتعلم الفضولي':'curious learner');
@@ -4092,6 +4112,7 @@ function showLoadingScreen(){
   document.getElementById('loadingStatus').textContent=__('loadingStatus');
   document.getElementById('loadingOverlay').classList.add('show');
   // Start cycling fun facts every 5 seconds
+  if(_loadingFactInterval){clearInterval(_loadingFactInterval);_loadingFactInterval=null}
   const facts = LANG[state.language]?.facts || LANG.en.facts;
   let idx = 0;
   document.getElementById('loadingFact').textContent = '💡 ' + facts[0];
@@ -4121,6 +4142,7 @@ function _preloadAllImages(callback){
   names.forEach(n => {
     const img = new Image();
     img.onload = img.onerror = () => {
+      _bgCache.add(n);
       loaded++;
       bar.style.width = Math.round((loaded / total) * 100) + '%';
       if (loaded >= total) setTimeout(callback, 400);
@@ -4138,21 +4160,14 @@ function saveUserName(){
     state.userName=name.charAt(0).toUpperCase()+name.slice(1);
     saveState();
     hideNamePrompt();
-    // Show loading screen and preload images before showing home
-    showLoadingScreen();
-    _preloadAllImages(() => {
-      hideLoadingScreen();
+    if(_onNameSaved){
+      var cb=_onNameSaved;
+      _onNameSaved=null;
+      cb();
+    }else{
       renderHome();
-      const g=document.getElementById('greetingText');
-      if(g){
-        const h=new Date().getHours();
-        const em=h<12?'🌅':h<18?'☀️':'🌙';
-        const key=h<12?'greeting':h<18?'greeting2':'greeting3';
-        const fallback=state.language==='ar'?'أيها المتعلم الفضولي':'curious learner';
-        const displayName=state.userName||fallback;
-        g.innerHTML='<span class="greeting-emoji">'+em+'</span> '+__(key).replace('{name}',displayName)+'<span class="edit-icon">&#9998;</span>';
-      }
-    });
+    }
+    const g=document.getElementById('greetingText');
     if(g){
       const h=new Date().getHours();
       const em=h<12?'🌅':h<18?'☀️':'🌙';
@@ -4186,6 +4201,7 @@ function selectLanguage(lang){
   hideLanguagePicker();
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  _onNameSaved=_startApp;
   setTimeout(()=>showNamePrompt(), 400);
 }
 
@@ -4241,6 +4257,7 @@ function applyFontSize(level){
     .btn-continue{font-size:${s.btn}px!important}
     .toast{font-size:${s.text}px!important}
     .lang-top-btn{font-size:${s.btn}px!important}
+    .reset-btn{font-size:${s.source}px!important}
   `;
   document.documentElement.setAttribute('data-font-size', level);
 }
@@ -4412,6 +4429,11 @@ function renderSlide(){
   const total=lv.slides.length;
   const card=document.getElementById('slideCard');
 
+  // Show loading overlay instantly if bgImage not yet cached
+  if(slide.bgImage && !_bgCache.has(slide.bgImage)){
+    showLoadingScreen();
+  }
+
   // First render — show immediately without fade
   if(_slideFirstRender){
     _slideFirstRender=false;
@@ -4436,11 +4458,38 @@ function _renderSlideContent(slide,total){
   document.getElementById('slideCounter').textContent=`${state.currentSlide+1} / ${total}`;
   document.getElementById('slideProgress').style.width=`${((state.currentSlide+1)/total)*100}%`;
 
-  // Scene
+  // Scene with loading state
   const sceneEl=document.getElementById('slideScene');
   const mappedScene=slide.scene==='mosque'||slide.scene==='masjid-nabawi'?'night':slide.scene;
   sceneEl.className='slide-scene scene-'+mappedScene;
-  if(slide.bgImage){sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';sceneEl.style.backgroundSize='cover';sceneEl.style.backgroundPosition='center';sceneEl.innerHTML=''}else{sceneEl.style.backgroundImage='';sceneEl.innerHTML=getSceneHTML(slide.scene)}
+  if(slide.bgImage){
+    if(_bgCache.has(slide.bgImage)){
+      sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';
+      sceneEl.style.backgroundSize='contain';
+      sceneEl.style.backgroundPosition='center';
+      sceneEl.style.backgroundRepeat='no-repeat';
+      sceneEl.innerHTML='';
+      sceneEl.className='slide-scene scene-'+mappedScene;
+    }else{
+      sceneEl.className='slide-scene scene-'+mappedScene+' loading';
+      sceneEl.innerHTML='<div class="scene-loader">🕋</div>';
+      _loadingImgId++;
+      const thisId=_loadingImgId;
+      const img=new Image();
+      img.onload=img.onerror=function(){
+        if(thisId!==_loadingImgId)return;
+        _bgCache.add(slide.bgImage);
+        sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';
+        sceneEl.style.backgroundSize='contain';
+        sceneEl.style.backgroundPosition='center';
+        sceneEl.style.backgroundRepeat='no-repeat';
+        sceneEl.innerHTML='';
+        sceneEl.className='slide-scene scene-'+mappedScene;
+        hideLoadingScreen();
+      };
+      img.src=slide.bgImage+'.png';
+    }
+  }else{sceneEl.style.backgroundImage='';sceneEl.innerHTML=getSceneHTML(slide.scene)}
 
   // Title
   const lv=state.currentLevel,sl=state.currentSlide;
@@ -4453,7 +4502,7 @@ function _renderSlideContent(slide,total){
   const sourceEl=document.getElementById('slideSource');
   const src=_s(slide,'source',lv,sl);
   if(src){
-    sourceEl.textContent=__('source')+': '+src;
+    sourceEl.innerHTML=__('source')+': '+src;
     sourceEl.style.display='block';
   }else{
     sourceEl.style.display='none';
@@ -5620,17 +5669,44 @@ document.addEventListener('click', e => {
     ctx.closePath();
   }
 
+// ==================== MOBILE RESIZE FIX ====================
+(function(){
+  const setAppHeight = () => {
+    const h = window.innerHeight;
+    document.documentElement.style.setProperty('--app-height', h + 'px');
+  };
+  window.addEventListener('resize', setAppHeight);
+  window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 200));
+  setAppHeight();
+})();
+
 // ==================== ENHANCED INIT ====================
 loadState();
 applyFontSize(state.fontSize||'medium');
-if(!state.setupDone){
-  setTimeout(()=>showLanguagePicker(), 500);
-} else if(!state.userName){
-  setTimeout(()=>showNamePrompt(), 500);
+let _preloadReady = false;
+let _windowReady = false;
+function _finishLoading(){
+  if(!_preloadReady || !_windowReady) return;
+  hideLoadingScreen();
+  updateLevelUnlocks();
+  renderHome();
+  renderLevels();
 }
-updateLevelUnlocks();
-renderHome();
-renderLevels();
+function _startApp(){
+  showLoadingScreen();
+  _preloadReady = false;
+  _windowReady = document.readyState === 'complete';
+  if(!_windowReady) window.addEventListener('load', () => { _windowReady = true; _finishLoading(); });
+  _preloadAllImages(() => { _preloadReady = true; _finishLoading(); });
+}
+if(!state.setupDone){
+  showLanguagePicker();
+} else if(!state.userName){
+  _onNameSaved = _startApp;
+  showNamePrompt();
+} else {
+  _startApp();
+}
 </script>
 <script data-goatcounter="https://ose.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
