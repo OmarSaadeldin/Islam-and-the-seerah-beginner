@@ -4867,7 +4867,7 @@ function doChallenge(btn){
   result.className='challenge-result success';
   awardChallengeReward();
   setTimeout(()=>{
-    result.scrollIntoView({behavior:'smooth',block:'center'});
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
   },200);
 }
 
