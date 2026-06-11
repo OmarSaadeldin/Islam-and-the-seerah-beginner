@@ -5681,6 +5681,18 @@ document.addEventListener('click', e => {
   };
   window.addEventListener('resize', setAppHeight);
   window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 200));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      setAppHeight();
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  });
+  window.addEventListener('pageshow', () => {
+    setAppHeight();
+    window.scrollTo(0, 0);
+  });
   setAppHeight();
 })();
 
