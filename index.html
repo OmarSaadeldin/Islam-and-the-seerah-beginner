@@ -3063,7 +3063,7 @@ const LANG={
     loadingTitle:"Preparing Your Journey",
     loadingSub:"Gathering the stories of the Prophet ﷺ",
     loadingStatus:"Loading illustrations...",
-    loadingWelcome:"Salam {name}, wait until we prepare your journey!",
+    loadingWelcome:"As-Salamu Alaikum {name}, wait until we prepare your journey!",
     loadingPatience:"The best things are worth waiting for — like the beauty of this story!",
     fsTitle:"Font Size",
     fsDesc:"Choose your preferred text size.",
@@ -4107,6 +4107,7 @@ let _loadingFactInterval = null;
 let _loadingImgId = 0;
 const _bgCache = new Set();
 let _onNameSaved = null;
+let _onFontPicked = null;
 
 function showLoadingScreen(){
   const name = state.userName || (state.language==='ar'?'أيها المتعلم الفضولي':'curious learner');
@@ -4205,7 +4206,10 @@ function selectLanguage(lang){
   hideLanguagePicker();
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  _onNameSaved=_startApp;
+  _onNameSaved=()=>{
+    _onFontPicked=_startApp;
+    showFontSizePicker();
+  };
   setTimeout(()=>showNamePrompt(), 400);
 }
 
@@ -4287,6 +4291,11 @@ function selectFontSize(level){
   saveState();
   applyFontSize(level);
   hideFontSizePicker();
+  if(_onFontPicked){
+    var cb=_onFontPicked;
+    _onFontPicked=null;
+    cb();
+  }
 }
 
 // ==================== SHOP ====================
@@ -4469,7 +4478,7 @@ function _renderSlideContent(slide,total){
   if(slide.bgImage){
     if(_bgCache.has(slide.bgImage)){
       sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';
-      sceneEl.style.backgroundSize='contain';
+      sceneEl.style.backgroundSize='cover';
       sceneEl.style.backgroundPosition='center';
       sceneEl.style.backgroundRepeat='no-repeat';
       sceneEl.innerHTML='';
@@ -4484,7 +4493,7 @@ function _renderSlideContent(slide,total){
         if(thisId!==_loadingImgId)return;
         _bgCache.add(slide.bgImage);
         sceneEl.style.backgroundImage='url('+slide.bgImage+'.png)';
-        sceneEl.style.backgroundSize='contain';
+        sceneEl.style.backgroundSize='cover';
         sceneEl.style.backgroundPosition='center';
         sceneEl.style.backgroundRepeat='no-repeat';
         sceneEl.innerHTML='';
